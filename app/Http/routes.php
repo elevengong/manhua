@@ -12,15 +12,20 @@
 */
 //---------------------后台------------------------
 Route::group(['middleware' => ['web']],function () {
-    Route::any('/','frontend\IndexController@index');
+    Route::get('/','frontend\IndexController@index');
+    Route::get('/manhua/{cid}/','frontend\IndexController@manhualist')->where(['cid' => '[0-9]+']);
+    Route::get('/manhuaview/{manhua_id}/','frontend\IndexController@manhuaview')->where(['manhua_id' => '[0-9]+']);
+    Route::get('/manhuachapter/{chapter_id}/','frontend\IndexController@manhuachapterview')->where(['chapter_id' => '[0-9]+']);
+
+    Route::get('/login.html','frontend\LoginController@login');
+    Route::get('/registered.html','frontend\LoginController@registered');
+
+    Route::post('/user/login','frontend\LoginController@loginprocess');
+    Route::post('/user/registered','frontend\LoginController@registeredprocess');
+    Route::get('/user/logout','frontend\LoginController@logout');
 
 
-
-
-    Route::any('/frontend/login','frontend\LoginController@login');
-    Route::get('/frontend/registered','frontend\LoginController@registered');
-
-
+    Route::get('/daili/{daili_id}','frontend\DailiController@dailientrance')->where(['daili_id' => '[0-9]+']);
 
 
 });

@@ -8,50 +8,26 @@ use App\Http\Requests;
 class IndexController extends FrontendController
 {
 
-    //首页默认用重庆时时彩
     public function index(Request $request){
-        echo "index";
-
+        return view('frontend.pc.index')->with('user', session('user'))->with('vip', session('vip'));
     }
 
-    public function getAdPhoto(Request $request,$uid){
-        //print_r($_SERVER);
-        $data['status'] = 1;
-        $data['msg'] = $uid;
-        $domain =  $request->getBaseUrl();
-        $ip = $request->getClientIp();
-        //$uri = $request->getUri();
-        echo "
-            var xmlhttp; 
-            if (window.XMLHttpRequest){ 
-                xmlhttp=new XMLHttpRequest();
-            } 
-            else{ 
-                xmlhttp=new ActiveXObject(\"Microsoft.XMLHTTP\");
-            }
-            function createRequest(){
-                var data  = window.location.pathname
-                var url = 'http://addaili.com/test';
-              
-                xmlhttp.open('post',url,true);
-                xmlhttp.setRequestHeader(\"Content-type\",\"application/x-www-form-urlencoded\");
-                xmlhttp.send('uri=' +data);
-                xmlhttp.onreadystatechange=function ()
-                {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                            alert(xmlhttp.responseText);
-                    } 
-                };    //回调函数
-            }
-            
-            createRequest();
-";
-//        echo "document.write(\"<div id=AdLayer1><a href='http://www.knowsky.com' target='_blank'><img src='http://addaili.com/resources/views/frontend/pc/ads/ad-01.gif' border='0'></a></div>\");";
-
-
+    public function manhualist(Request $request,$cid){
+        return view('frontend.pc.manhualist')->with('user', session('user'))->with('vip', session('vip'));
     }
 
+    public function manhuaview(Request $request,$manhua_id){
+        return view('frontend.pc.manhuaview')->with('user', session('user'))->with('vip', session('vip'));
+    }
 
+    public function manhuachapterview(Request $request,$chaper_id){
+        return view('frontend.pc.manhuachapterview')->with('user', session('user'))->with('vip', session('vip'));
+    }
+
+    //代理入口
+    public function dailienter(){
+
+    }
 
 
 
