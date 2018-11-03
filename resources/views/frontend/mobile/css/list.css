@@ -1,0 +1,83 @@
+@CHARSET "UTF-8";
+.caricature-item{
+	height:250px;
+	padding:0 30px;
+	background-color:#FFF;
+}
+.caricature-item .caricature-item-left{
+	float:left;
+	width:200px;
+	height:213px;
+	padding-top:15px;
+	padding-bottom:15px;
+}
+.caricature-item .caricature-item-left img{
+	width:160px;
+	/*height:213px;*/
+}
+.caricature-item .caricature-item-right{
+	float:left;
+	width:480px;
+	height:220px;
+	border-bottom:1px solid #ddd;
+	padding-top:15px;
+	padding-bottom:15px;
+}
+.icon-user-center{
+	width: 44px;
+	right: 25px;
+	position: absolute;
+}
+.caricature-item-right .item-right-left{
+	width:308px;
+	float:left;
+}
+.caricature-item-right .item-right-left .caricature-item-name{
+	font-size:34px;
+	color:#010101;
+	padding-top:8px;
+}
+.caricature-item-right .item-right-left .caricature-item-name a{
+	color:#010101;
+}
+.caricature-item-right .item-right-left .caricature-item-status{
+	font-size:26px;
+	color:#666;
+	padding-top:12px;
+}
+.caricature-item-right .item-right-left .caricature-item-status a{
+	color:#666;
+}
+.caricature-item-right .item-right-left .caricature-item-label{
+	font-size:26px;
+	color:#666;
+	padding-top:12px;
+}
+.caricature-item-right .item-right-left .caricature-item-label a{
+	color:#666;
+}
+.caricature-item-right .item-right-left .caricature-item-update-detail{
+	font-size:26px;
+	color:#666;
+	padding-top:12px;
+}
+.caricature-item-right .item-right-left .caricature-item-update-detail a{
+	color:#666;
+}
+.caricature-item-right .item-right-right{
+	width: 172px;
+	line-height:213px;
+	height:213px;
+	float:left;
+}
+.caricature-item-right .item-right-right .read-button a{
+	background-color:#fe7f1f;
+	font-size:32px;
+	color:#FFF;
+	padding-top:6px;
+	padding-bottom:8px;
+	padding-left:22px;
+	padding-right:22px;
+	border-radius:28px;
+	box-shadow:0px 8px 10px #FFC49A;
+}

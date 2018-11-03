@@ -1,0 +1,62 @@
+.system-msg{
+	text-align:center;
+	z-index: 1000;
+	width:490px;
+	min-height:80px;
+	font-size:30px;
+	color:#FFF;
+	background-color:rgba(0, 0, 0, 0.8);
+	border-radius:10px;
+	position: absolute;
+	left:50%;
+	top:425px;
+	margin-left: -245px;
+}
+.system-msg .msg{
+	padding-top:20px;
+	padding-bottom:20px;
+}
+div.main{
+	width:750px;
+	margin: 0 auto;
+	background-color:#f3f3f3;
+}
+div.main.fixed{
+	padding-top:120px;	/*顶部固定增加的css*/
+}
+.interval{
+	height:20px;
+	background-color: #f3f3f3;
+}
+.main .main-title{
+	height:100px;
+	border-top:solid 1px #ddd;
+	border-bottom:solid 1px #ddd;
+	position:relative;
+	background-color:#FFF;
+}
+a{
+	border:0px;
+	text-decoration : none;
+}
+
+.main .main-title .go-back{
+	left:40px;
+	position:absolute;
+	width:26px;
+}
+
+.main .main-title .title{
+	left:96px;
+	position:absolute;
+	font-size:36px;
+	color:#010101;
+	min-width:400px;
+	line-height:100px;
+}
+
+.main .main-title .go-home{
+	right:90px;
+	position:absolute;
+	width:44px;
+}

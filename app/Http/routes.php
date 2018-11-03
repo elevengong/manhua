@@ -12,10 +12,12 @@
 */
 //---------------------后台------------------------
 Route::group(['middleware' => ['web']],function () {
+    //pc端-----------------------------------------------------------------------------------------
     Route::get('/','frontend\IndexController@index');
+    Route::get('/index.html','frontend\IndexController@index');
     Route::get('/manhua/{cid}/','frontend\IndexController@manhualist')->where(['cid' => '[0-9]+']);
     Route::get('/manhuaview/{manhua_id}/','frontend\IndexController@manhuaview')->where(['manhua_id' => '[0-9]+']);
-    Route::get('/manhuachapter/{chapter_id}/','frontend\IndexController@manhuachapterview')->where(['chapter_id' => '[0-9]+']);
+    Route::get('/manhuachapter/{chapter_id}/','frontend\IndexController@manhuachapterview.blade.php')->where(['chapter_id' => '[0-9]+']);
 
     Route::get('/login.html','frontend\LoginController@login');
     Route::get('/registered.html','frontend\LoginController@registered');
@@ -24,62 +26,28 @@ Route::group(['middleware' => ['web']],function () {
     Route::post('/user/registered','frontend\LoginController@registeredprocess');
     Route::get('/user/logout','frontend\LoginController@logout');
 
-
     Route::get('/daili/{daili_id}','frontend\DailiController@dailientrance')->where(['daili_id' => '[0-9]+']);
 
+    //wap端-----------------------------------------------------------------------------------------
+    Route::get('/m/','frontend\IndexController@wapindex');
+    Route::get('/m/index.html','frontend\IndexController@wapindex');
+    Route::get('/m/manhua/{cid}/','frontend\IndexController@wapmanhualist')->where(['cid' => '[0-9]+']);
+    Route::get('/m/manhuaview/{manhua_id}/','frontend\IndexController@wapmanhuaview')->where(['manhua_id' => '[0-9]+']);
+    Route::get('/m/manhuachapter/{chapter_id}/','frontend\IndexController@wapmanhuachapterview')->where(['chapter_id' => '[0-9]+']);
+
+    Route::get('/m/manhuavipchapter/{chapter_id}/','frontend\IndexController@wapmanhuavipchapterview')->where(['chapter_id' => '[0-9]+']);
+
+    Route::get('/m/user/center','frontend\IndexController@center');
+    Route::get('/m/user/wappay','frontend\IndexController@wappay');
+
+//    Route::get('/m/manhua/{cid}/','frontend\IndexController@manhualist')->where(['cid' => '[0-9]+']);
+//    Route::get('/m/manhuaview/{manhua_id}/','frontend\IndexController@manhuaview')->where(['manhua_id' => '[0-9]+']);
+//    Route::get('/m/manhuachapter/{chapter_id}/','frontend\IndexController@manhuachapterview.blade.php')->where(['chapter_id' => '[0-9]+']);
 
 });
 
-Route::group(['middleware' => ['web','admin.login']],function () {
-    Route::get('/backend/index','backend\IndexController@index');
-    Route::post('/backend/logout','backend\IndexController@logout');
-    Route::post('/backend/changepwd','backend\IndexController@changepwd');
+Route::group(['middleware' => ['web','user.login']],function () {
 
-    Route::any('/backend/adminlist','backend\AdminController@adminList');
-    Route::any('/backend/admin/changestatus','backend\AdminController@changestatus');
-    Route::delete('/backend/admin/delete/{admin_id}','backend\AdminController@delete')->where(['admin_id' => '[0-9]+']);
-    Route::post('/backend/admin/add','backend\AdminController@adminadd');
-
-    //总属性设置
-    Route::get('/backend/static','backend\StaticController@index');
-    Route::post('/backend/static/changestatus','backend\StaticController@changestatus');
-    Route::any('/backend/static/addstatic','backend\StaticController@addstatic');
-    Route::any('/backend/static/editstatic/{set_id}','backend\StaticController@editstatic')->where(['set_id' => '[0-9]+']);
-
-    //广告会员列表和站长列表
-    Route::any('/backend/member/adsmember','backend\MemberController@adsmemberlist');
-    Route::any('/backend/member/sitemember','backend\MemberController@sitememberlist');
-    Route::post('/backend/member/changememberstatus','backend\MemberController@changememberstatus');
-    Route::any('/backend/member/resetmemberpwd/{member_id}','backend\MemberController@resetmemberpwd')->where(['member_id' => '[0-9]+']);
-    Route::post('/backend/member/setpersonalrate','backend\MemberController@setpersonalrate');
-
-
-
-    //广告会员充值
-    Route::any('/backend/money/applydeposit','backend\DepositController@applydeposit');
-    Route::get('/backend/money/dealdepositorder/{deposit_id}','backend\DepositController@dealdepositorder')->where(['deposit_id' => '[0-9]+']);
-    Route::any('/backend/money/updatedepositorder/{deposit_id}','backend\DepositController@updatedepositorder')->where(['deposit_id' => '[0-9]+']);
-
-    Route::any('/backend/money/deposit','backend\DepositController@depositrecord');
-
-
-
-    //站长提款
-    Route::any('/backend/money/applywithdraw','backend\WithdrawController@applywithdraw');
-    Route::get('/backend/money/dealwithdraworder/{withdraw_id}','backend\WithdrawController@dealwithdraworder')->where(['withdraw_id' => '[0-9]+']);
-    Route::any('/backend/money/updatewithdraworder/{withdraw_id}','backend\WithdrawController@updatewithdraworder')->where(['withdraw_id' => '[0-9]+']);
-
-
-    Route::any('/backend/money/withdraw','backend\WithdrawController@withdrawrecord');
-
-
-    //审核站长网站列表
-    Route::any('/backend/ads/verifylist','backend\WebsitesController@verifylist');
-    Route::any('/backend/ads/verifyweb/{web_id}','backend\WebsitesController@verifyweb')->where(['web_id' => '[0-9]+']);
-
-    //广告列表
-    Route::any('/backend/ads/adslist','backend\AdsController@adslist');
-    Route::any('/backend/ads/verifyads','backend\AdsController@verifyads');
 
     //图片上传
     Route::any('/backend/upload','backend\JobController@upload');

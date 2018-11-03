@@ -1,0 +1,81 @@
+@CHARSET "UTF-8";
+body{
+	overflow-x: hidden;
+    /* overflow-y: hidden; */
+}
+.main{
+	height:100%;
+	overflow-y: scroll;
+}
+.fixed-top-title{
+	width:750px;
+	height:98px;
+	line-height:98px;
+	background-color: rgba(0,0,0, 0.8);
+	position: fixed;
+	z-index:3;
+}
+.fixed-top-title{
+	top:20px;
+}
+.fixed-top-title .title-main{
+	position:relative;
+}
+.fixed-top-title .title-main .fixed-top-title-icon{
+	left:40px;
+	position:absolute;
+	width:26px;
+}
+.fixed-top-title .title-main .fixed-top-title-text{
+	left:96px;
+	position:absolute;
+	font-size:36px;
+	color:#FFF;
+	min-width:400px;
+}
+
+.content-main{
+	padding-top:20px;	
+}
+.content-main img{
+	width:100%;
+}
+
+.shade{
+	width:750px;
+	height:100%;
+	position:absolute;
+	top:0px;
+	z-index:2;
+	/* background-color:rgba(255,255,255,0.5); */
+	background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,1));
+}
+.shade .show-content{
+	position:absolute;
+	bottom: 0px;
+}
+.shade .show-content .msg{
+	font-size:32px;
+	line-height:64px;
+	color:#333;
+	text-align:center;
+	width:750px;
+}
+
+.shade .show-content .button{
+	text-align:center;
+	padding-top:74px;
+	padding-bottom:64px;
+}
+.shade .show-content .button a{
+	font-size:36px;
+	width:690px;
+	height:88px;
+	line-height:88px;
+	text-align:center;
+	background-color:#fe7f1f;
+	color:#fff;
+	display: inline-block;
+	border-radius:44px;
+	box-shadow:0px 8px 10px #FFC49A;
+}
