@@ -54,20 +54,6 @@ class IndexController extends FrontendController
         return view('frontend.mobile.wapmanhuavipchapterview')->with('user', session('user'))->with('vip', session('vip'));
     }
 
-    //wap user center
-    public function center(){
-        return view('frontend.mobile.usercenter')->with('user', session('user'))->with('vip', session('vip'));
-    }
-
-    //wap user pay
-    public function wappay(){
-        return view('frontend.mobile.wappay')->with('user', session('user'))->with('vip', session('vip'));
-    }
-
-    //代理入口
-    public function dailienter(){
-
-    }
 
 
 

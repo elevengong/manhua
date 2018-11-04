@@ -36,7 +36,7 @@
     <div class="main-title">
         <div class="logo"><img height="100px" src="<?php echo asset( "/resources/views/frontend/mobile/images/logo.png") ?>" /></div>
         <div class="icon-user-center">
-            <a href="/user/center">
+            <a href="/m/user/center">
                 <img src="<?php echo asset( "/resources/views/frontend/mobile/images/icon_user_center.png") ?>" />
             </a>
         </div>

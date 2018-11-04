@@ -44,7 +44,7 @@
             个人中心
         </div>
         <div class="go-home">
-            <a href="/">
+            <a href="/m">
                 <img src="http://img.18manhua.com/static/img/home.png" />
             </a>
         </div>

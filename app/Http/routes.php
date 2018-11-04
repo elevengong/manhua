@@ -19,8 +19,11 @@ Route::group(['middleware' => ['web']],function () {
     Route::get('/manhuaview/{manhua_id}/','frontend\IndexController@manhuaview')->where(['manhua_id' => '[0-9]+']);
     Route::get('/manhuachapter/{chapter_id}/','frontend\IndexController@manhuachapterview.blade.php')->where(['chapter_id' => '[0-9]+']);
 
-    Route::get('/login.html','frontend\LoginController@login');
-    Route::get('/registered.html','frontend\LoginController@registered');
+    Route::get('/login','frontend\LoginController@login');
+    Route::get('/registered','frontend\LoginController@registered');
+
+    //这需要login才能进去的
+    Route::get('/user/center','frontend\UserController@center');
 
     Route::post('/user/login','frontend\LoginController@loginprocess');
     Route::post('/user/registered','frontend\LoginController@registeredprocess');
@@ -37,8 +40,13 @@ Route::group(['middleware' => ['web']],function () {
 
     Route::get('/m/manhuavipchapter/{chapter_id}/','frontend\IndexController@wapmanhuavipchapterview')->where(['chapter_id' => '[0-9]+']);
 
-    Route::get('/m/user/center','frontend\IndexController@center');
-    Route::get('/m/user/wappay','frontend\IndexController@wappay');
+
+    Route::get('/m/user/login','frontend\LoginController@waplogin');
+    Route::get('/m/user/register','frontend\LoginController@wapregister');
+
+    //这需要login才能进去的
+    Route::get('/m/user/center','frontend\UserController@wapcenter');
+    Route::get('/m/user/pay','frontend\UserController@wappay');
 
 //    Route::get('/m/manhua/{cid}/','frontend\IndexController@manhualist')->where(['cid' => '[0-9]+']);
 //    Route::get('/m/manhuaview/{manhua_id}/','frontend\IndexController@manhuaview')->where(['manhua_id' => '[0-9]+']);
@@ -47,6 +55,7 @@ Route::group(['middleware' => ['web']],function () {
 });
 
 Route::group(['middleware' => ['web','user.login']],function () {
+
 
 
     //图片上传

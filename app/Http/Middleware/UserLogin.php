@@ -17,7 +17,7 @@ class UserLogin
     {
         if(!$request->session()->has('user'))
         {
-            return redirect('/');
+            return redirect('/login.html');
         }
         return $next($request);
 

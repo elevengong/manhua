@@ -45,12 +45,12 @@
             癖好
         </div>
         <div class="go-home">
-            <a href="/">
+            <a href="/m">
                 <img src="<?php echo asset( "/resources/views/frontend/mobile/images/home.png") ?>" />
             </a>
         </div>
         <div class="icon-user-center">
-            <a href="/user/center">
+            <a href="/m/user/center">
                 <img src="<?php echo asset( "/resources/views/frontend/mobile/images/icon_user_center.png") ?>" />
             </a>
         </div>

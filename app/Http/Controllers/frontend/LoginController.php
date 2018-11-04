@@ -10,13 +10,19 @@ use App\Http\Requests;
 class LoginController extends FrontendController
 {
     public function login(){
+        //$isMobile = $this->isMobile();
+
         if(empty(session('user')))
         {
             return view('frontend.pc.login');
         }else{
             return redirect('/');
         }
+    }
 
+    //wap user login
+    public function waplogin(){
+        return view('frontend.mobile.login');
     }
 
     public function registered(){
