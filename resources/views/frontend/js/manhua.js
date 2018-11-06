@@ -109,16 +109,6 @@ $(".red_total_a3 span").after("<div class='Ashar_box'><div class='bdsharebuttonb
                 })
             }
         },
-        //百度统计
-        tongji:function(){
-            var _hmt = _hmt || [];
-            (function() {
-              var hm = document.createElement("script");
-              hm.src = "https://hm.baidu.com/hm.js?977478d88bf1169784edd457c947cec8";
-              var s = document.getElementsByTagName("script")[0]; 
-              s.parentNode.insertBefore(hm, s);
-            })();
-        },
         //排序
         d_inverted : function(){
             $(".d_menu ul li").each(function(){
@@ -186,7 +176,9 @@ $(".red_total_a3 span").after("<div class='Ashar_box'><div class='bdsharebuttonb
                     //     })
                     // });
                     $(".fi_classify_img").click(function(){
-                        $(".fi_classify,.fi_classify_after").toggle();
+                        // $(".fi_classify,.fi_classify_after").toggle();
+                        $(".fi_classify").css('display','block');
+                        $(".fi_classify_after").css('display','block');
                         return false;
                     });
 
@@ -211,7 +203,8 @@ $(".red_total_a3 span").after("<div class='Ashar_box'><div class='bdsharebuttonb
                 $(".fi_go").css("right",fi_go-50);
             }
 
-            $(".fi_classify_ul").css("height",$(window).height()/1.2);
+            $(".fi_classify_ul").css("height",$(window).height()/2);
+            $(".shade").css("height",$(document).height());
 
             //弹窗
             $(".fi_dialog_r span").click(function(){
@@ -262,7 +255,6 @@ $(".red_total_a3 span").after("<div class='Ashar_box'><div class='bdsharebuttonb
             this.m_top();
             this.m_day();
             this.d_menu_much();
-            this.tongji();
             this.d_inverted();
             this.red_none();
             this.List_kong();
@@ -345,19 +337,6 @@ $(document).keydown(function (event) {
     
 });
 
-//百度推送
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
 
 
 

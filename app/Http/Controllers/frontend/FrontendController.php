@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\frontend;
 
+use App\Model\Attribute;
+use App\Model\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
@@ -9,10 +11,15 @@ use App\Http\Requests;
 class FrontendController extends Controller
 {
     protected $navigations;
+    protected $attribute;
+    protected $categories;
 
     public function __construct()
     {
         date_default_timezone_set('Asia/Shanghai');
+        $this->attribute = Attribute::orderBy('id','asc')->get()->toArray();
+        $this->categories = Category::where('status',1)->orderBy('priority','desc')->get()->toArray();
+
     }
 
     //删除所有session数据

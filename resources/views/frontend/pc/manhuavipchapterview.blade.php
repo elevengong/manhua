@@ -56,8 +56,7 @@
                     </div>
                     <ul class="fi_classify_ul" style="">
                         @foreach($chapterList as $list)
-                            <li><a class="@if($list['chapter_id'] == $manhuaChapter[0]['chapter_id']) selected @endif" href="/manhuachapter/1/{{$list['chapter_id']}}">第{{$list['chapter_name']}}话</a></li>
-                        @endforeach
+                            <li><a class="@if($list['chapter_id'] == $manhuaChapter[0]['chapter_id']) selected @endif" href="/manhuachapter/1/{{$list['chapter_id']}}">第{{$list['chapter_name']}}话</a></li>@endforeach
                     </ul>
                 </div>
             </div>
@@ -115,7 +114,7 @@
             <div class="fr t_tab_ac">
                 <select id="jumpchapter" onchange="cpage(this.value)">
                     @foreach($chapterList as $list)
-                    <option value="{{$list['chapter_id']}}" @if($list['chapter_id'] == $manhuaChapter[0]['chapter_id']) selected="selected" @endif>{{$list['chapter_name']}}话</option>
+                        <option value="{{$list['chapter_id']}}" @if($list['chapter_id'] == $manhuaChapter[0]['chapter_id']) selected="selected" @endif>{{$list['chapter_name']}}话</option>
                     @endforeach
                 </select>
             </div>
@@ -133,14 +132,29 @@
 
     </div>
     <div class="r_img ">
-        @foreach($manhuaPhotos as $photo)
-        <img src="{{$attribute[1]['value']}}/public/manhua/{{$photo['photo']}}" alt="{{$manhua[0]['name']}} 第{{$manhuaChapter[0]['chapter_name']}}话">
-        @endforeach
-
-        <!--免责声明-->
-        <div class="read_dis">
-            本页内容均来自互联网，XXX与内容的出处无关，如有违反您的权益，或您发现有任何不良内容或图片错误，<a href="javascript:;">请联系我们</a>，我们将修正该动漫图片。
+        <img src="{{$attribute[1]['value']}}/public/manhua/{{$manhuaPhotos[0]['photo']}}" alt="{{$manhua[0]['name']}} 第{{$manhuaChapter[0]['chapter_name']}}话">
+        <img src="{{$attribute[1]['value']}}/public/manhua/{{$manhuaPhotos[1]['photo']}}" alt="{{$manhua[0]['name']}} 第{{$manhuaChapter[0]['chapter_name']}}话">
+    </div>
+    <div class="shade">
+        @if(isset($user))
+        <div class="show-content">
+            <div class="msg">
+                很抱歉，您的还不是VIP会员，无法继续查看<br>请充值VIP或用金币购买后继续阅读，谢谢
+            </div>
+            <div class="button">
+                <a href="/user/deposit">前往充值</a> <a href="javascript:" onclick="paychapter({{$manhuaChapter[0]['chapter_id']}});">购买本章节</a>
+            </div>
         </div>
+        @else
+            <div class="show-content">
+                <div class="msg">
+                    很抱歉，您的还没有登陆，无法继续查看<br>请登陆后继续阅读
+                </div>
+                <div class="button">
+                    <a href="/login">登陆</a> <a href="/registered">注册</a>
+                </div>
+            </div>
+            @endif
 
     </div>
     <div class="ov r_page">
@@ -159,11 +173,11 @@
                     @endforeach
                 </select>
             </div>
-                @if($manhuaChapter[0]['pre_chapter_id']==0)
-                    <a href="/manhuaview/{{$manhua_id}}" class="fr r_tab_up">上一章节</a>
-                @else
-                    <a href="/manhuachapter/{{$manhua_id}}/{{$manhuaChapter[0]['pre_chapter_id']}}" class="fr r_tab_up">上一章节</a>
-                @endif
+            @if($manhuaChapter[0]['pre_chapter_id']==0)
+                <a href="/manhuaview/{{$manhua_id}}" class="fr r_tab_up">上一章节</a>
+            @else
+                <a href="/manhuachapter/{{$manhua_id}}/{{$manhuaChapter[0]['pre_chapter_id']}}" class="fr r_tab_up">上一章节</a>
+            @endif
 
         </div>
     </div>
@@ -173,8 +187,21 @@
 <script src="<?php echo asset( "/resources/views/frontend/js/jquery-1.10.1.min.js") ?>"></script>
 <script src="<?php echo asset( "/resources/views/frontend/js/swiper-3.4.2.jquery.min.js") ?>"></script>
 <script src="<?php echo asset( "/resources/views/frontend/js/manhua.js") ?>"></script>
+<script src="<?php echo asset( "/resources/views/frontend/js/layer/layer.js") ?>"></script>
 
 <script>
+    function paychapter(chapter_id) {
+        var index = layer.open({
+            type: 2,
+            title: "购买漫画章节",
+            closeBtn: 0,
+            area: ['600px', '500px'], //宽高
+            shadeClose: true,
+            resize:false,
+            content: '/user/pay/' + chapter_id
+        });
+    }
+
     function cpage(value) {
         window.location.href = "/manhuachapter/{{$manhua_id}}/" + value;
     }

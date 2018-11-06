@@ -44,17 +44,23 @@
             <ul>
                 @if(empty($user))
                 <li class="reg_share">
-                    <span><a href="/login.html">登陆</a></span>
+                    <span><a href="/login">登陆</a></span>
                 </li>
                 <li class="reg_share">
-                    <span><a href="/registered.html">注册</a></span>
+                    <span><a href="/registered">注册</a></span>
                 </li>
                 <li class="reg_share">
-                    <span><a href="/vip.html">VIP</a></span>
+                    <span><a href="/vip">VIP</a></span>
                 </li>
                 @else
                     <li class="reg_share">
-                        <span>用户:<a href="/user/info">{{$user}}</a>(@if($vip==1)VIP @else 普通用户 @endif )</span>
+                        <span>用户:<a href="/user/center">{{$user}}</a>(@if($vip==1)VIP @else 普通用户 @endif )</span>
+                    </li>
+                    <li class="reg_share">
+                        <span><a href="/user/center">用户中心</a></span>
+                    </li>
+                    <li class="reg_share">
+                        <span><a href="/user/deposit">充值VIP</a></span>
                     </li>
                     <li class="reg_share">
                         <span><a href="/user/logout">注销</a></span>
@@ -63,12 +69,6 @@
 
             </ul>
         </div>
-
-
-    </div>
-
-    <div class="m_bg_b">
-        <img src="http://i-1.gumua.com/2018/7/2/cd4d6b33-ff3b-4474-9ade-3b823889156c.png?width=1920&height=200"/>
     </div>
 
 </div>
@@ -103,8 +103,9 @@
 <div class="m_navs">
     <div class="m1100 m_nav">
         <a href="/" class="active">首页</a>
-        <a href="/Manhua/">分类</a>
-        <a href="/News/">资讯</a>
+        @foreach($categories as $category)
+        <a href="{{$category['url']}}">{{$category['c_name']}}</a>
+        @endforeach
     </div>
 </div>
 

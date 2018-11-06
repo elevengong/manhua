@@ -59,9 +59,9 @@ class LoginController extends FrontendController
                             $result['0']['vip'] = 0;
                             $result['0']['vip_start_time'] = '0000-00-00 00:00:00';
                             $result['0']['vip_end_time'] = '0000-00-00 00:00:00';
-                            $result = Users::where('uid',session('uid'))->update(['login_ip'=>$login_ip, 'last_login_time'=>$last_login_time, 'vip' => '0', 'vip_start_time' =>'0000-00-00 00:00:00', 'vip_end_time' =>'0000-00-00 00:00:00']);
+                            $result1 = Users::where('uid',session('uid'))->update(['login_ip'=>$login_ip, 'last_login_time'=>$last_login_time, 'vip' => '0', 'vip_start_time' =>'0000-00-00 00:00:00', 'vip_end_time' =>'0000-00-00 00:00:00']);
                         }else{
-                            $result = Users::where('uid',session('uid'))->update(['login_ip'=>$login_ip, 'last_login_time'=>$last_login_time]);
+                            $result1 = Users::where('uid',session('uid'))->update(['login_ip'=>$login_ip, 'last_login_time'=>$last_login_time]);
                         }
                         session(['user' => $user_name, 'uid' => $result['0']['uid'],'vip' => $result['0']['vip'],'vip_start_time' => $result['0']['vip_start_time'],'vip_end_time' => $result['0']['vip_end_time']]);
 

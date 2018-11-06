@@ -1,39 +1,22 @@
 @extends("frontend.pc.layout")
 @section('content')
     <div class="m1100 m_content">
-        <div class="m_banner swiper-container swiper-container-horizontal">
-            <div class="swiper-wrapper">
-
-                <div class="swiper-slide" style="width: 1100px;">
-                    <a class="fl m_banner_l" href="#"><img src="<?php echo asset( "/resources/views/frontend/pc/images/3.png") ?>"></a>
-                    <div class="fr m_banner_r">
-                        <div class="m_ban_rt">
-                            <a class="m_ban_first" href="#"><img src="<?php echo asset( "/resources/views/frontend/pc/images/1.png") ?>"></a>
-                            <a class="m_ban_second" href="#"><img src="<?php echo asset( "/resources/views/frontend/pc/images/2.png") ?>"></a>
-                        </div>
-                        <div class="m_ban_rb">
-                            <a class="m_ban_first" href="#"><img src="<?php echo asset( "/resources/views/frontend/pc/images/4.png") ?>"></a>
-                            <a class="m_ban_second" href="#"><img src="<?php echo asset( "/resources/views/frontend/pc/images/5.png") ?>"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="loginform">
+            <div class="loginHint_wrapper">
+                <h1>登陆｜<a href="/registered" style="color: red;">注册</a></h1>
+                <p class="bold">网站名和介绍</p>
+                <p class="normal">登陆会员帐号，体现更多乐趣。</p>
+            </div>
             <form class="form form-horizontal" action="#" method="post">
                 {{csrf_field()}}
-                <div class="row cl">
-                    <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60d;</i></label>
-                    <div class="formControls col-xs-8">
-                        <input id="name" name="name" type="text" placeholder="账户" class="input-text size-L">
-                    </div>
+                <div class="input_field">
+                    <span class="input_fieldTitle">用户帐号</span>
+                    <input type="text" name="name" id="name" placeholder="请输入你的用户帐号" tabindex="1">
                 </div>
-                <div class="row cl">
-                    <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60e;</i></label>
-                    <div class="formControls col-xs-8">
-                        <input id="pwd" name="pwd" type="password" placeholder="密码" class="input-text size-L">
-                    </div>
+                <div class="input_field">
+                    <span class="input_fieldTitle">密码</span>
+                    <input type="password" name="pwd" id="pwd" autocomplete="off" placeholder="请输入7-12字符" tabindex="2">
                 </div>
                 <div class="row cl">
                     <div class="formControls col-xs-8 col-xs-offset-3">
@@ -44,6 +27,28 @@
             </form>
 
         </div>
+
+
+        <div class="m_banner swiper-container swiper-container-horizontal">
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide" style="width: 1100px;">
+                    <a class="fl m_banner_l" href="#"><img src="<?php //echo asset( "/resources/views/frontend/pc/images/3.png") ?>"></a>
+                    <div class="fr m_banner_r">
+                        <div class="m_ban_rt">
+                            <a class="m_ban_first" href="#"><img src="<?php //echo asset( "/resources/views/frontend/pc/images/1.png") ?>"></a>
+                            <a class="m_ban_second" href="#"><img src="<?php //echo asset( "/resources/views/frontend/pc/images/2.png") ?>"></a>
+                        </div>
+                        <div class="m_ban_rb">
+                            <a class="m_ban_first" href="#"><img src="<?php //echo asset( "/resources/views/frontend/pc/images/4.png") ?>"></a>
+                            <a class="m_ban_second" href="#"><img src="<?php //echo asset( "/resources/views/frontend/pc/images/5.png") ?>"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <script src="<?php echo asset( "/resources/views/frontend/js/baseCheck.js") ?>"></script>
         <script>
             $(function(){

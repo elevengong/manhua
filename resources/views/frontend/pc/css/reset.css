@@ -85,7 +85,7 @@
 	/*header*/
 	#header{border-bottom:1px solid #eee;}
 	.header{padding: 13px 0;height: 70px;box-sizing: border-box;}
-	.m_logo{float:left;margin-right: 190px;}
+	.m_logo{float:left;margin-right: 120px;}
 	.m_logo img{width:175px;height:39px;}
 	.m_search{float:left;background:#f3f3f3;border-radius: 100px;padding:5px;width:364px;}
 	.m_search_i{overflow: hidden;}
@@ -156,3 +156,25 @@
 	.bdsharebuttonbox a{display: block;width: 80px;height: 53px;
 		background-image: url(http://static.yxdown.com/pc/news/images/news.png) no-repeat;}
 	.bdsharebuttonbox a.Abds_weixin{background-position: -1px  -1px;}
+
+	.pager ul li{
+		color: #fff;
+		padding: 2px 10px;
+		font-weight: normal;
+		border-radius: 2px;
+		border: 1px !important;
+		display: inline;
+	}
+	.pager .active{
+		border-radius: 2px;
+	}
+
+.pager .active span{
+	border: 1px solid #999;
+	color: #fff;
+	padding: 2px 10px;
+	font-weight: normal;
+	border-radius: 2px;
+	margin: 0 5px 0;
+	background: #ef8823;
+}

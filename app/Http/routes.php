@@ -17,13 +17,14 @@ Route::group(['middleware' => ['web']],function () {
     Route::get('/index.html','frontend\IndexController@index');
     Route::get('/manhua/{cid}/','frontend\IndexController@manhualist')->where(['cid' => '[0-9]+']);
     Route::get('/manhuaview/{manhua_id}/','frontend\IndexController@manhuaview')->where(['manhua_id' => '[0-9]+']);
-    Route::get('/manhuachapter/{chapter_id}/','frontend\IndexController@manhuachapterview.blade.php')->where(['chapter_id' => '[0-9]+']);
+    Route::get('/manhuachapter/{manhua_id}/{chapter_id}/','frontend\IndexController@manhuachapterview')->where(['manhua_id' => '[0-9]+'])->where(['chapter_id' => '[0-9]+']);
 
     Route::get('/login','frontend\LoginController@login');
     Route::get('/registered','frontend\LoginController@registered');
 
     //这需要login才能进去的
-    Route::get('/user/center','frontend\UserController@center');
+
+
 
     Route::post('/user/login','frontend\LoginController@loginprocess');
     Route::post('/user/registered','frontend\LoginController@registeredprocess');
@@ -55,8 +56,10 @@ Route::group(['middleware' => ['web']],function () {
 });
 
 Route::group(['middleware' => ['web','user.login']],function () {
-
-
+    Route::get('/user/pay/{chapter_id}','frontend\UserController@pay')->where(['chapter_id' => '[0-9]+']);
+    Route::any('/user/paycoin/{chapter_id}','frontend\UserController@paycoin')->where(['chapter_id' => '[0-9]+']);
+    Route::get('/user/center','frontend\UserController@center');
+    Route::get('/user/deposit','frontend\UserController@deposit');
 
     //图片上传
     Route::any('/backend/upload','backend\JobController@upload');

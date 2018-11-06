@@ -1,22 +1,22 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
-Source Server Version : 50626
+Source Server         : localmysql
+Source Server Version : 50553
 Source Host           : localhost:3306
 Source Database       : manhua
 
 Target Server Type    : MYSQL
-Target Server Version : 50626
+Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-11-01 02:11:11
+Date: 2018-11-06 19:49:18
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for admin
+-- Table structure for `admin`
 -- ----------------------------
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE `admin` (
@@ -34,10 +34,28 @@ CREATE TABLE `admin` (
 -- ----------------------------
 -- Records of admin
 -- ----------------------------
-INSERT INTO `admin` VALUES ('1', 'admin', 'eyJpdiI6Ink0S0tEemtWN2RzTDhpXC9cLzNlRk5Idz09IiwidmFsdWUiOiJnU1RsK1BpMmtKemlXc2VsUzAyb2xBPT0iLCJtYWMiOiJjMTFiM2RjOTNmYmU3ZjQ4OWM5M2ZhZDgxOTVlNzkyOTNmMmRkNjk5MjMwNzU2NDE0YmRiZDRkYjNhYWI2ZjZlIn0=', '1', '127.0.0.1', '2018-07-09 13:41:55', '2018-10-31 22:24:35', '2018-10-31 10:24:35');
+INSERT INTO `admin` VALUES ('1', 'admin', 'eyJpdiI6Ink0S0tEemtWN2RzTDhpXC9cLzNlRk5Idz09IiwidmFsdWUiOiJnU1RsK1BpMmtKemlXc2VsUzAyb2xBPT0iLCJtYWMiOiJjMTFiM2RjOTNmYmU3ZjQ4OWM5M2ZhZDgxOTVlNzkyOTNmMmRkNjk5MjMwNzU2NDE0YmRiZDRkYjNhYWI2ZjZlIn0=', '1', '127.0.0.1', '2018-07-09 13:41:55', '2018-11-06 13:47:07', '2018-11-06 01:47:07');
 
 -- ----------------------------
--- Table structure for category
+-- Table structure for `attribute`
+-- ----------------------------
+DROP TABLE IF EXISTS `attribute`;
+CREATE TABLE `attribute` (
+  `id` int(3) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
+  `value` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of attribute
+-- ----------------------------
+INSERT INTO `attribute` VALUES ('1', '网站域名', 'http://www.manhua.com/');
+INSERT INTO `attribute` VALUES ('2', '图片域名', 'http://img.manhua.com');
+INSERT INTO `attribute` VALUES ('3', '联系QQ', '9874512');
+
+-- ----------------------------
+-- Table structure for `category`
 -- ----------------------------
 DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
@@ -55,13 +73,13 @@ CREATE TABLE `category` (
 -- ----------------------------
 -- Records of category
 -- ----------------------------
-INSERT INTO `category` VALUES ('1', '全彩韩漫', '0', '', '100', '1', '2018-10-29 00:24:20', '2018-10-29 00:24:20');
+INSERT INTO `category` VALUES ('1', '全彩韩漫', '0', '/manhua/1', '100', '1', '2018-11-06 18:38:25', '2018-10-29 00:24:20');
 INSERT INTO `category` VALUES ('2', '连载韩漫', '0', 'none', '99', '1', '2018-10-29 01:21:35', '2018-10-29 01:21:35');
 INSERT INTO `category` VALUES ('3', '完结韩漫', '0', 'none', '98', '1', '2018-10-29 01:22:41', '2018-10-29 01:21:55');
 INSERT INTO `category` VALUES ('4', '热门韩漫', '0', 'none', '97', '1', '2018-10-29 01:22:43', '2018-10-29 01:22:29');
 
 -- ----------------------------
--- Table structure for daili
+-- Table structure for `daili`
 -- ----------------------------
 DROP TABLE IF EXISTS `daili`;
 CREATE TABLE `daili` (
@@ -69,10 +87,13 @@ CREATE TABLE `daili` (
   `daili_name` varchar(50) NOT NULL,
   `pwd` varchar(255) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0:冻结 1:正常',
-  `alipay` varchar(200) NOT NULL,
-  `alipay_name` varchar(50) NOT NULL,
-  `weixin` varchar(200) NOT NULL,
-  `weixin_name` varchar(50) NOT NULL,
+  `alipay` varchar(50) DEFAULT NULL,
+  `alipay_name` varchar(50) DEFAULT NULL,
+  `weixin` varchar(50) DEFAULT NULL,
+  `weixin_name` varchar(50) DEFAULT NULL,
+  `bank` varchar(20) DEFAULT NULL,
+  `bank_name` varchar(50) DEFAULT NULL,
+  `bank_accountname` varchar(50) DEFAULT NULL,
   `current_commision` decimal(8,2) NOT NULL,
   `frzon_commision` decimal(8,2) NOT NULL,
   `commission_rate` decimal(5,2) NOT NULL DEFAULT '0.70',
@@ -86,11 +107,11 @@ CREATE TABLE `daili` (
 -- ----------------------------
 -- Records of daili
 -- ----------------------------
-INSERT INTO `daili` VALUES ('1', 'lucas', 'eyJpdiI6IkxaelUrRTNrMkdqUCt2c2N5dlg4REE9PSIsInZhbHVlIjoieHU0aGJvK0ltbzYyXC91bUtRV3M4YlE9PSIsIm1hYyI6ImNmMmExY2JmNzA2MmUxZTFjMzIwZmRkMmRjYjVhZTI4MjAzOWNiMjQ1NDNiZDBkNDc5YWIyMWJlY2RkODFjYWEifQ==', '1', '', '', '', '', '341.86', '0.00', '0.70', '127.0.0.1', '2018-11-01 01:50:35', '2018-10-28 18:14:18', '2018-11-01 01:50:35');
-INSERT INTO `daili` VALUES ('2', 'lucas1', 'eyJpdiI6InltRDYzY2JqczJad0Myc2JxeDg5aVE9PSIsInZhbHVlIjoiRE5PekhEcXRuMXljQ2kyMW5acmdZQT09IiwibWFjIjoiOTZmZDZjZWUyMmU1ZTQ3ZWYyMzgwZDNlZTQwZTVjM2JlZTMxNDU4YzIxYjUxMDlhNDg5YmIzZGM4ZmJjOGZiMyJ9', '1', '', '', '', '', '0.00', '0.00', '0.72', '', '2018-10-29 15:51:05', '2018-10-29 15:51:05', '2018-10-29 15:51:05');
+INSERT INTO `daili` VALUES ('1', 'lucas', 'eyJpdiI6IkxaelUrRTNrMkdqUCt2c2N5dlg4REE9PSIsInZhbHVlIjoieHU0aGJvK0ltbzYyXC91bUtRV3M4YlE9PSIsIm1hYyI6ImNmMmExY2JmNzA2MmUxZTFjMzIwZmRkMmRjYjVhZTI4MjAzOWNiMjQ1NDNiZDBkNDc5YWIyMWJlY2RkODFjYWEifQ==', '1', '123123', '赵云', '', '', '1651561', '工商银行', '赵云', '240.86', '101.00', '0.70', '127.0.0.1', '2018-11-03 13:28:32', '2018-10-28 18:14:18', '2018-11-03 13:28:32');
+INSERT INTO `daili` VALUES ('2', 'lucas1', 'eyJpdiI6InltRDYzY2JqczJad0Myc2JxeDg5aVE9PSIsInZhbHVlIjoiRE5PekhEcXRuMXljQ2kyMW5acmdZQT09IiwibWFjIjoiOTZmZDZjZWUyMmU1ZTQ3ZWYyMzgwZDNlZTQwZTVjM2JlZTMxNDU4YzIxYjUxMDlhNDg5YmIzZGM4ZmJjOGZiMyJ9', '1', '', '', '', '', '', '', null, '0.00', '0.00', '0.72', '', '2018-10-29 15:51:05', '2018-10-29 15:51:05', '2018-10-29 15:51:05');
 
 -- ----------------------------
--- Table structure for manhua
+-- Table structure for `manhua`
 -- ----------------------------
 DROP TABLE IF EXISTS `manhua`;
 CREATE TABLE `manhua` (
@@ -103,19 +124,26 @@ CREATE TABLE `manhua` (
   `views` int(8) NOT NULL DEFAULT '0',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0: 不显示 1:显示',
   `finish` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0:连载 1:完结',
-  `last_update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`manhua_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of manhua
 -- ----------------------------
-INSERT INTO `manhua` VALUES ('1', '1', '漫画名1', '1', '/public/uploads/15408044416Uy5S.jpg', '2', '548', '1', '0', '2018-10-30 18:10:17', '2018-10-29 17:14:04', '2018-10-30 18:10:17');
+INSERT INTO `manhua` VALUES ('1', '1', '無名島', '1', '/public/uploads/1541394815u2jCa.jpg', '在沒有名字的島-「無名島」上展開的生存遊戲  撲倒對方或被殺，想活命就做出抉擇吧! ', '618', '1', '1', '2018-11-05 13:14:17', '2018-10-29 17:14:04', '2018-11-06 19:48:46');
+INSERT INTO `manhua` VALUES ('2', '1', '人妻性解放', '', '/public/uploads/1541394880hCb9l.jpg', '不論多麼堅可不摧的事物  若從一個微小的細縫開始擊破 很快的 將會分崩離析', '322', '1', '1', '2018-11-05 13:15:33', '2018-11-05 13:15:33', '2018-11-05 13:15:33');
+INSERT INTO `manhua` VALUES ('3', '1', '紅杏出牆', '', '/public/uploads/1541394944f6kj9.jpg', '發現我老婆和我朋友關係的那瞬間 與憤怒伴隨而來的，是快感!', '890', '1', '1', '2018-11-05 13:16:07', '2018-11-05 13:16:07', '2018-11-05 13:16:07');
+INSERT INTO `manhua` VALUES ('4', '1', '制服的誘惑', '', '/public/uploads/1541394987U5hKr.jpg', '比什麼都還引人遐想的制服，制服的誘惑，你承受的了嗎?', '157', '1', '1', '2018-11-05 13:16:33', '2018-11-05 13:16:33', '2018-11-05 13:16:33');
+INSERT INTO `manhua` VALUES ('5', '1', '陰濕路', '', '/public/uploads/1541395006Z16Wf.jpg', '因病毒流出造成殭屍到處流竄，對那些生死一線間的生存者來說，貪婪與情慾將不需再隱瞞。', '846', '1', '1', '2018-11-05 13:16:52', '2018-11-05 13:16:52', '2018-11-05 13:16:52');
+INSERT INTO `manhua` VALUES ('6', '1', '激情分享屋', '', '/public/uploads/15413950236rRQP.jpg', '只要喝酒就會變成壞男人?膽小眼鏡男大反轉!性福(?)的民宿老闆激情大放送!', '453', '1', '1', '2018-11-05 13:17:11', '2018-11-05 13:17:11', '2018-11-05 15:20:30');
+INSERT INTO `manhua` VALUES ('7', '1', '我的秘密砲友', '', '/public/uploads/1541395043HrpV2.jpg', '我明明就已經有女朋友了，但為什麼總是會想起那個女人呢？與謎樣的她展開的秘密幽會！', '218', '1', '1', '2018-11-05 13:17:28', '2018-11-05 13:17:28', '2018-11-05 13:17:28');
+INSERT INTO `manhua` VALUES ('8', '1', 'ACE:禁斷的詐欺之夜', '', '/public/uploads/1541395064zWlq0.jpg', '專門欺騙女人海撈一筆的高手牛郎佑彬，面對出現在眼前的獵物富家女高韻，他將展開猛烈的攻勢騙取她的一切...', '205', '1', '1', '2018-11-05 13:18:00', '2018-11-05 13:18:00', '2018-11-05 13:18:00');
 
 -- ----------------------------
--- Table structure for manhuachapters
+-- Table structure for `manhuachapters`
 -- ----------------------------
 DROP TABLE IF EXISTS `manhuachapters`;
 CREATE TABLE `manhuachapters` (
@@ -139,17 +167,17 @@ CREATE TABLE `manhuachapters` (
 -- ----------------------------
 -- Records of manhuachapters
 -- ----------------------------
-INSERT INTO `manhuachapters` VALUES ('57', '1', '1', '/public/uploads/1540892969LYfkV.jpg', '1', '0', '0', '58', '21', '1', '10', '2018-10-30 17:51:55', '2018-10-30 17:51:55');
-INSERT INTO `manhuachapters` VALUES ('58', '1', '2', '', '1', '1', '57', '59', '582', '2', '10', '2018-10-30 01:50:27', '2018-10-30 01:50:27');
-INSERT INTO `manhuachapters` VALUES ('59', '1', '3', '', '1', '1', '58', '60', '384', '3', '10', '2018-10-30 01:50:27', '2018-10-30 01:50:27');
-INSERT INTO `manhuachapters` VALUES ('60', '1', '4', '', '1', '1', '59', '61', '643', '4', '10', '2018-10-30 01:50:28', '2018-10-30 01:50:28');
-INSERT INTO `manhuachapters` VALUES ('61', '1', '5', '', '1', '1', '60', '62', '644', '5', '10', '2018-10-30 01:50:28', '2018-10-30 01:50:28');
-INSERT INTO `manhuachapters` VALUES ('62', '1', '6', '', '1', '1', '61', '67', '916', '6', '10', '2018-10-30 15:27:15', '2018-10-30 15:27:15');
-INSERT INTO `manhuachapters` VALUES ('67', '1', '7', '', '0', '1', '62', '68', '433', '7', '10', '2018-10-30 15:30:01', '2018-10-30 15:30:01');
-INSERT INTO `manhuachapters` VALUES ('68', '1', '8', '/public/uploads/1540884593v52QN.jpg', '0', '1', '67', '0', '785', '8', '10', '2018-10-30 15:30:01', '2018-10-30 15:30:01');
+INSERT INTO `manhuachapters` VALUES ('57', '1', '1', '/public/uploads/15413951802BESU.jpg', '1', '0', '0', '58', '27', '1', '0', '2018-11-06 13:33:52', '2018-11-06 13:33:52');
+INSERT INTO `manhuachapters` VALUES ('58', '1', '2', '/public/uploads/1541395193EI9FW.jpg', '1', '0', '57', '59', '619', '2', '0', '2018-11-06 17:30:12', '2018-11-06 17:30:12');
+INSERT INTO `manhuachapters` VALUES ('59', '1', '3', '/public/uploads/1541395203YbbkO.jpg', '1', '1', '58', '60', '437', '3', '10', '2018-11-06 17:30:13', '2018-11-06 17:30:13');
+INSERT INTO `manhuachapters` VALUES ('60', '1', '4', '/public/uploads/1541395214cYNFM.jpg', '1', '1', '59', '61', '684', '4', '10', '2018-11-06 17:30:13', '2018-11-06 17:30:13');
+INSERT INTO `manhuachapters` VALUES ('61', '1', '5', '/public/uploads/1541395223aiNdZ.jpg', '1', '1', '60', '62', '680', '5', '10', '2018-11-06 17:30:10', '2018-11-06 17:30:10');
+INSERT INTO `manhuachapters` VALUES ('62', '1', '6', '/public/uploads/1541395233eDXZj.jpg', '1', '1', '61', '67', '953', '6', '10', '2018-11-06 19:48:37', '2018-11-06 19:48:37');
+INSERT INTO `manhuachapters` VALUES ('67', '1', '7', '/public/uploads/1541395245D9VU6.jpg', '0', '1', '62', '68', '433', '7', '10', '2018-11-05 13:20:46', '2018-11-05 13:20:46');
+INSERT INTO `manhuachapters` VALUES ('68', '1', '8', '/public/uploads/15413952542vVZ9.jpg', '0', '1', '67', '0', '785', '8', '10', '2018-11-05 13:20:55', '2018-11-05 13:20:55');
 
 -- ----------------------------
--- Table structure for manhuaphotos
+-- Table structure for `manhuaphotos`
 -- ----------------------------
 DROP TABLE IF EXISTS `manhuaphotos`;
 CREATE TABLE `manhuaphotos` (
@@ -306,7 +334,7 @@ INSERT INTO `manhuaphotos` VALUES ('535', '67', '/1/67/154089076616724.jpg', '11
 INSERT INTO `manhuaphotos` VALUES ('536', '67', '/1/67/154089076616725.jpg', '12', '1');
 
 -- ----------------------------
--- Table structure for orderdeposit
+-- Table structure for `orderdeposit`
 -- ----------------------------
 DROP TABLE IF EXISTS `orderdeposit`;
 CREATE TABLE `orderdeposit` (
@@ -333,10 +361,10 @@ CREATE TABLE `orderdeposit` (
 -- ----------------------------
 -- Records of orderdeposit
 -- ----------------------------
-INSERT INTO `orderdeposit` VALUES ('1', '3', '1', '29.90', '20181030111', '1', null, '1', '1', '1', '赵子龙', '123', '2018-10-30 04:34:46', '127.0.01', '2018-10-31 00:34:46', '2018-10-30 16:34:46');
+INSERT INTO `orderdeposit` VALUES ('1', '3', '1', '29.90', '20181030111', '1', null, '1', '1', '1', '赵子龙', '123', '2018-11-02 17:20:21', '127.0.01', '2018-11-02 17:20:24', '2018-10-30 16:34:46');
 
 -- ----------------------------
--- Table structure for orderwithdraw
+-- Table structure for `orderwithdraw`
 -- ----------------------------
 DROP TABLE IF EXISTS `orderwithdraw`;
 CREATE TABLE `orderwithdraw` (
@@ -352,15 +380,38 @@ CREATE TABLE `orderwithdraw` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`withdraw_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of orderwithdraw
 -- ----------------------------
-INSERT INTO `orderwithdraw` VALUES ('1', '1', '100.00', '2018103121', '支付宝:234324323', '1', 'asdfds', '24324324', null, '2018-10-31 22:47:21', '2018-10-31 23:50:08');
+INSERT INTO `orderwithdraw` VALUES ('1', '1', '100.00', '2018103121', '支付宝:234324323', '1', 'asdfds', '24324324', null, '2018-10-31 22:47:21', '2018-11-02 02:42:48');
+INSERT INTO `orderwithdraw` VALUES ('2', '1', '200.00', '154118528824', '支付宝:123123--提款人:赵云', '1', null, null, null, '2018-11-03 03:01:28', '2018-11-03 03:01:28');
+INSERT INTO `orderwithdraw` VALUES ('3', '1', '100.00', '154118573773', '支付宝:123123--提款人:赵云', '1', null, null, null, '2018-11-03 03:08:57', '2018-11-03 03:08:57');
+INSERT INTO `orderwithdraw` VALUES ('4', '1', '100.00', '154118588374', '支付宝:123123--提款人:赵云', '3', null, null, null, '2018-11-03 03:11:23', '2018-11-03 10:36:40');
+INSERT INTO `orderwithdraw` VALUES ('5', '1', '101.00', '154122291298', '银行帐号:1651561--开户银行:工商银行--开户人:赵云', '0', null, null, null, '2018-11-03 13:28:32', '2018-11-03 13:28:32');
 
 -- ----------------------------
--- Table structure for saletype
+-- Table structure for `paycoinlist`
+-- ----------------------------
+DROP TABLE IF EXISTS `paycoinlist`;
+CREATE TABLE `paycoinlist` (
+  `id` int(8) NOT NULL AUTO_INCREMENT,
+  `uid` int(8) NOT NULL,
+  `manhua_id` int(8) NOT NULL,
+  `chapter_id` int(8) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of paycoinlist
+-- ----------------------------
+INSERT INTO `paycoinlist` VALUES ('2', '3', '1', '62', '2018-11-06 16:34:59', '2018-11-06 16:34:59');
+
+-- ----------------------------
+-- Table structure for `saletype`
 -- ----------------------------
 DROP TABLE IF EXISTS `saletype`;
 CREATE TABLE `saletype` (
@@ -379,7 +430,7 @@ INSERT INTO `saletype` VALUES ('3', '年卡', '199.90');
 INSERT INTO `saletype` VALUES ('4', '购买金币', '10.00');
 
 -- ----------------------------
--- Table structure for statistics
+-- Table structure for `statistics`
 -- ----------------------------
 DROP TABLE IF EXISTS `statistics`;
 CREATE TABLE `statistics` (
@@ -391,15 +442,18 @@ CREATE TABLE `statistics` (
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `daili_id` (`daili_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of statistics
 -- ----------------------------
 INSERT INTO `statistics` VALUES ('1', '1', '127.0.0.1', 'http://www.baidu.com/sdf/sdf', '福建省海口市', '2018-11-01 00:19:06');
+INSERT INTO `statistics` VALUES ('2', '1', '127.0.0.1', '浏览器输入网站', 'SINGAPORE', '2018-11-03 03:16:43');
+INSERT INTO `statistics` VALUES ('3', '1', '127.0.0.1', 'http://manhuadailibackend.com/backend/showindex', 'SINGAPORE', '2018-11-03 04:15:22');
+INSERT INTO `statistics` VALUES ('4', '1', '127.0.0.1', '浏览器输入网址', 'SINGAPORE', '2018-11-03 04:18:11');
 
 -- ----------------------------
--- Table structure for users
+-- Table structure for `users`
 -- ----------------------------
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
@@ -419,10 +473,12 @@ CREATE TABLE `users` (
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('3', '1', 'eleven', 'eyJpdiI6IjBEYzUyUmJDb0J3aTF4dmlMeDliY2c9PSIsInZhbHVlIjoiVDJlNmsyK0lOWDRMUGNzWmlvT01xQT09IiwibWFjIjoiM2M1NDlmNWQ5MzBiNTBmNWYxZTc1ZjY5ZmQwZTc3ZmRiN2I1MTNjZGY3MTRjZDUyYWUzZDg3ZGYzMmIxY2MwNyJ9', '1', '1', '0000-00-00 00:00:00', '2018-12-30 04:28:11', '0000-00-00 00:00:00', '127.0.0.1', '127.0.0.1', '2018-10-28 09:26:21', '0', '2018-10-28 08:50:29', '2018-10-30 16:34:46');
+INSERT INTO `users` VALUES ('3', '1', 'eleven', 'eyJpdiI6IjBEYzUyUmJDb0J3aTF4dmlMeDliY2c9PSIsInZhbHVlIjoiVDJlNmsyK0lOWDRMUGNzWmlvT01xQT09IiwibWFjIjoiM2M1NDlmNWQ5MzBiNTBmNWYxZTc1ZjY5ZmQwZTc3ZmRiN2I1MTNjZGY3MTRjZDUyYWUzZDg3ZGYzMmIxY2MwNyJ9', '1', '0', '0000-00-00 00:00:00', '2018-12-30 04:28:11', '0000-00-00 00:00:00', '127.0.0.1', '127.0.0.1', '2018-10-28 09:26:21', '80', '2018-10-28 08:50:29', '2018-11-06 16:34:59');
 INSERT INTO `users` VALUES ('5', '3', 'eleven1', 'eyJpdiI6IkZtc2RRTEFWaGNMV0dpUnJVbHp5WUE9PSIsInZhbHVlIjoidHR5NHJkZ3N0dmF0U3NOcnY0alZVUT09IiwibWFjIjoiMmQyNWQwNzU1YWE4ZGYxY2M5OGQ2MTM1M2E2ZmY5NmQ3ZDIyMGFlYTQ3ZDk4ZTJlOGQwNTQxY2M5MTcxYjA0ZCJ9', '1', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '127.0.0.1', '127.0.0.1', '2018-10-28 06:34:29', '0', '2018-10-28 18:34:29', '2018-10-29 02:37:49');
+INSERT INTO `users` VALUES ('6', '1', 'test1', 'eyJpdiI6Im9CRUdBU2NUSWpMVitLY1BTV0NiVGc9PSIsInZhbHVlIjoiUGQxU3pONVBcL2VHTlAwM2VmakVvUW4rWXZFVGZXTHpVU2dUYkVOdUcxZzA9IiwibWFjIjoiZjMzYjI3NDRhNmI3YTMyZjA2YTRhZTU1ZjI0MWExNTk1YTZjMGI2ZDlkZjhiZjdkZjNkMjIxYzcxNGQzMmVkYyJ9', '1', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '127.0.0.1', '127.0.0.1', '2018-11-02 06:31:48', '0', '2018-11-02 18:31:48', '2018-11-02 18:31:48');
+INSERT INTO `users` VALUES ('7', '0', 'eleven2', 'eyJpdiI6IlNobzBaR3RtdGJOZHgwSjBEUEMwUEE9PSIsInZhbHVlIjoiYkI0WEJmaHVMZ1Bpekh6Nngwem9NZz09IiwibWFjIjoiYWE5ZTgxNjRjYTRlNTMzMmUzOGQzOWRhZjE5MDQyNzA1YTYyNjIxY2E1YTdjN2IzNjhkNTFmOGMwNTQyMmM4YyJ9', '1', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '127.0.0.1', '127.0.0.1', '2018-11-06 05:29:01', '0', '2018-11-06 17:29:01', '2018-11-06 17:29:01');

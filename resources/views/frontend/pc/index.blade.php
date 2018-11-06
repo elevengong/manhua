@@ -31,102 +31,15 @@
                  <a href="/Manhua/" class="fr m_new_more">更多</a>
              </div>
              <ul class="ov m_new_ul">
+                 @foreach($lastUpdateManhua as $manhua)
                  <li>
-                     <a href="/Manhua/28443.html">
-                         <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                         <h3>喂，看见耳朵啦</h3>
-                         <p>更新于：<span>2018-10-26</span></p>
-                         <p>最新章节：<i>第30话：危机四伏的霓虹行（六）</i></p>
+                     <a href="/manhuaview/{{$manhua['manhua_id']}}">
+                         <img src="{{$attribute[1]['value'].$manhua['cover']}}">
+                         <h3>{{$manhua['name']}}</h3>
+                         <p>更新于：<span>{{date('Y-m-d',strtotime($manhua['last_update_time']))}}</span></p>
                      </a>
                  </li>
-                 <li>
-                     <a href="/Manhua/28442.html">
-                         <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                         <h3>重生之海棠花开</h3>
-                         <p>更新于：<span>2018-10-26</span></p>
-                         <p>最新章节：<i>第十五话：再给甜头</i></p>
-                     </a>
-                 </li>
-                 <li>
-                     <a href="/Manhua/28428.html">
-                         <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                         <h3>贵圈的故事（制作人）</h3>
-                         <p>更新于：<span>2018-10-26</span></p>
-                         <p>最新章节：<i>第55话 小屁孩</i></p>
-                     </a>
-                 </li>
-                 <li>
-                     <a href="/Manhua/28436.html">
-                         <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                         <h3>精灵之子（莉莉丝的救赎）</h3>
-                         <p>更新于：<span>2018-10-26</span></p>
-                         <p>最新章节：<i>第77话 各方势力</i></p>
-                     </a>
-                 </li>
-                 <li>
-                     <a href="/Manhua/28441.html">
-                         <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                         <h3>魔道祖师</h3>
-                         <p>更新于：<span>2018-10-25</span></p>
-                         <p>最新章节：<i>第44话：折腾一宿</i></p>
-                     </a>
-                 </li>
-                 <li>
-                     <a href="/Manhua/28440.html">
-                         <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                         <h3>隔墙所爱（无眠之夜）</h3>
-                         <p>更新于：<span>2018-10-25</span></p>
-                         <p>最新章节：<i>第23话</i></p>
-                     </a>
-                 </li>
-                 <li>
-                     <a href="/Manhua/28439.html">
-                         <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                         <h3>是鬼又怎样</h3>
-                         <p>更新于：<span>2018-10-25</span></p>
-                         <p>最新章节：<i>第20话：精神病院（2）</i></p>
-                     </a>
-                 </li>
-                 <li>
-                     <a href="/Manhua/28438.html">
-                         <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                         <h3>2204号房客（杀手男友）</h3>
-                         <p>更新于：<span>2018-10-25</span></p>
-                         <p>最新章节：<i>第74话：以往</i></p>
-                     </a>
-                 </li>
-                 <li>
-                     <a href="/Manhua/28437.html">
-                         <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                         <h3>我的吸血鬼总裁</h3>
-                         <p>更新于：<span>2018-10-24</span></p>
-                         <p>最新章节：<i>第4话</i></p>
-                     </a>
-                 </li>
-                 <li>
-                     <a href="/Manhua/28435.html">
-                         <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                         <h3>神堂石碑</h3>
-                         <p>更新于：<span>2018-10-23</span></p>
-                         <p>最新章节：<i>第60话：切断</i></p>
-                     </a>
-                 </li>
-                 <li>
-                     <a href="/Manhua/28435.html">
-                         <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                         <h3>神堂石碑</h3>
-                         <p>更新于：<span>2018-10-23</span></p>
-                         <p>最新章节：<i>第60话：切断</i></p>
-                     </a>
-                 </li>
-                 <li>
-                     <a href="/Manhua/28435.html">
-                         <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                         <h3>神堂石碑</h3>
-                         <p>更新于：<span>2018-10-23</span></p>
-                         <p>最新章节：<i>第60话：切断</i></p>
-                     </a>
-                 </li>
+                 @endforeach
              </ul>
          </div>
      </div>
@@ -140,102 +53,15 @@
                  <a href="/Manhua/" class="fr m_new_more">更多</a>
              </div>
              <ul class="ov m_new_ul">
-                 <li>
-                     <a href="/Manhua/28443.html">
-                         <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                         <h3>喂，看见耳朵啦</h3>
-                         <p>更新于：<span>2018-10-26</span></p>
-                         <p>最新章节：<i>第30话：危机四伏的霓虹行（六）</i></p>
-                     </a>
-                 </li>
-                 <li>
-                     <a href="/Manhua/28442.html">
-                         <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                         <h3>重生之海棠花开</h3>
-                         <p>更新于：<span>2018-10-26</span></p>
-                         <p>最新章节：<i>第十五话：再给甜头</i></p>
-                     </a>
-                 </li>
-                 <li>
-                     <a href="/Manhua/28428.html">
-                         <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                         <h3>贵圈的故事（制作人）</h3>
-                         <p>更新于：<span>2018-10-26</span></p>
-                         <p>最新章节：<i>第55话 小屁孩</i></p>
-                     </a>
-                 </li>
-                 <li>
-                     <a href="/Manhua/28436.html">
-                         <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                         <h3>精灵之子（莉莉丝的救赎）</h3>
-                         <p>更新于：<span>2018-10-26</span></p>
-                         <p>最新章节：<i>第77话 各方势力</i></p>
-                     </a>
-                 </li>
-                 <li>
-                     <a href="/Manhua/28441.html">
-                         <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                         <h3>魔道祖师</h3>
-                         <p>更新于：<span>2018-10-25</span></p>
-                         <p>最新章节：<i>第44话：折腾一宿</i></p>
-                     </a>
-                 </li>
-                 <li>
-                     <a href="/Manhua/28440.html">
-                         <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                         <h3>隔墙所爱（无眠之夜）</h3>
-                         <p>更新于：<span>2018-10-25</span></p>
-                         <p>最新章节：<i>第23话</i></p>
-                     </a>
-                 </li>
-                 <li>
-                     <a href="/Manhua/28439.html">
-                         <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                         <h3>是鬼又怎样</h3>
-                         <p>更新于：<span>2018-10-25</span></p>
-                         <p>最新章节：<i>第20话：精神病院（2）</i></p>
-                     </a>
-                 </li>
-                 <li>
-                     <a href="/Manhua/28438.html">
-                         <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                         <h3>2204号房客（杀手男友）</h3>
-                         <p>更新于：<span>2018-10-25</span></p>
-                         <p>最新章节：<i>第74话：以往</i></p>
-                     </a>
-                 </li>
-                 <li>
-                     <a href="/Manhua/28437.html">
-                         <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                         <h3>我的吸血鬼总裁</h3>
-                         <p>更新于：<span>2018-10-24</span></p>
-                         <p>最新章节：<i>第4话</i></p>
-                     </a>
-                 </li>
-                 <li>
-                     <a href="/Manhua/28435.html">
-                         <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                         <h3>神堂石碑</h3>
-                         <p>更新于：<span>2018-10-23</span></p>
-                         <p>最新章节：<i>第60话：切断</i></p>
-                     </a>
-                 </li>
-                 <li>
-                     <a href="/Manhua/28435.html">
-                         <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                         <h3>神堂石碑</h3>
-                         <p>更新于：<span>2018-10-23</span></p>
-                         <p>最新章节：<i>第60话：切断</i></p>
-                     </a>
-                 </li>
-                 <li>
-                     <a href="/Manhua/28435.html">
-                         <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                         <h3>神堂石碑</h3>
-                         <p>更新于：<span>2018-10-23</span></p>
-                         <p>最新章节：<i>第60话：切断</i></p>
-                     </a>
-                 </li>
+                 @foreach($hotManhua as $manhua)
+                     <li>
+                         <a href="/manhuaview/{{$manhua['manhua_id']}}">
+                             <img src="{{$attribute[1]['value'].$manhua['cover']}}">
+                             <h3>{{$manhua['name']}}</h3>
+                             <p>更新于：<span>{{date('Y-m-d',strtotime($manhua['last_update_time']))}}</span></p>
+                         </a>
+                     </li>
+                 @endforeach
              </ul>
          </div>
      </div>
@@ -250,9 +76,6 @@
          <div class="ov m_day_tj">
 
              <div class="fl m_day_fl">
-
-
-
 
                  <div class="imgpreviewWrap">
                      <div class="snapShotWrap setbox2">
@@ -288,7 +111,6 @@
                                  <p>
                                      <a href="/Manhua/7/"><u>韩国</u></a>
                                      <a href="/Manhua/10/"><u>完结</u></a>
-                                     <a href="/Manhua/16/"><u>爱情</u></a>
 
                                  </p>
                              </div>
@@ -310,8 +132,6 @@
                                  <p>
                                      <a href="/Manhua/7/"><u>韩国</u></a>
                                      <a href="/Manhua/9/"><u>连载</u></a>
-                                     <a href="/Manhua/16/"><u>爱情</u></a>
-                                     <a href="/Manhua/38/"><u>职场</u></a>
 
                                  </p>
                              </div>
@@ -328,13 +148,6 @@
                              <div class="m_day-ctit">
                                  <h2> <a href="http://www.gumua.com/Manhua/27950.html"> 家庭教师 </a></h2>
                                  <p>作者：<span></span></p>
-                                 <p>最新章节：</p>
-                                 <p><i>第34话：我爱你</i></p>
-                                 <p><i>第33话：我爱你</i></p>
-                                 <p><i>第32话：我爱你</i></p>
-                                 <p><i>第31话：我爱你</i></p>
-                                 <p><i>第29话：我爱你</i></p>
-                                 <p>
                                      <a href="/Manhua/7/"><u>韩国</u></a>
                                      <a href="/Manhua/10/"><u>完结</u></a>
 
@@ -354,14 +167,6 @@
                                  <h2> <a href="http://www.gumua.com/Manhua/27948.html"> 好友同居（H-mate） </a></h2>
                                  <p>作者：<span></span></p>
                                  <p>最新章节：<i>第78话：大结局（下）</i></p>
-
-                                 <p>
-                                     <a href="/Manhua/3/"><u>青年漫</u></a>
-                                     <a href="/Manhua/4/"><u>女青漫</u></a>
-                                     <a href="/Manhua/7/"><u>韩国</u></a>
-                                     <a href="/Manhua/10/"><u>完结</u></a>
-
-                                 </p>
                              </div>
                              <span class="m_day_score"><i>9</i></span>
                          </div>
@@ -377,14 +182,6 @@
                                  <h2> <a href="http://www.gumua.com/Manhua/27947.html"> 超级吸引力（sweetguy） </a></h2>
                                  <p>作者：<span></span></p>
                                  <p>最新章节：<i>大结局</i></p>
-
-                                 <p>
-                                     <a href="/Manhua/3/"><u>青年漫</u></a>
-                                     <a href="/Manhua/4/"><u>女青漫</u></a>
-                                     <a href="/Manhua/7/"><u>韩国</u></a>
-                                     <a href="/Manhua/10/"><u>完结</u></a>
-
-                                 </p>
                              </div>
                              <span class="m_day_score"><i>9</i></span>
                          </div>
@@ -400,56 +197,14 @@
              </div>
              <div class="fr m_day_fr">
                  <ul class="ov m_new_ul mine_photo">
+                     @foreach($completeManhua as $manhua)
                      <li>
-                         <a href="/Manhua/28436.html">
-                             <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                             <h3>精灵之子（莉莉丝的救赎）</h3>
+                         <a href="/manhuaview/{{$manhua['manhua_id']}}">
+                             <img src="{{$attribute[1]['value'].$manhua['cover']}}">
+                             <h3>{{$manhua['name']}}</h3>
                          </a>
                      </li>
-                     <li>
-                         <a href="/Manhua/28440.html">
-                             <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                             <h3>隔墙所爱（无眠之夜）</h3>
-                         </a>
-                     </li>
-                     <li>
-                         <a href="/Manhua/28438.html">
-                             <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                             <h3>2204号房客（杀手男友）</h3>
-                         </a>
-                     </li>
-                     <li>
-                         <a href="/Manhua/28438.html">
-                             <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                             <h3>2204号房客（杀手男友）</h3>
-                         </a>
-                     </li>
-
-                     <li>
-                         <a href="/Manhua/28436.html">
-                             <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                             <h3>精灵之子（莉莉丝的救赎）</h3>
-                         </a>
-                     </li>
-                     <li>
-                         <a href="/Manhua/28440.html">
-                             <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                             <h3>隔墙所爱（无眠之夜）</h3>
-                         </a>
-                     </li>
-                     <li>
-                         <a href="/Manhua/28438.html">
-                             <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                             <h3>2204号房客（杀手男友）</h3>
-                         </a>
-                     </li>
-                     <li>
-                         <a href="/Manhua/28438.html">
-                             <img src="<?php echo asset( "/resources/views/frontend/pc/images/12.jpg") ?>">
-                             <h3>2204号房客（杀手男友）</h3>
-                         </a>
-                     </li>
-
+                     @endforeach
 
 
 
