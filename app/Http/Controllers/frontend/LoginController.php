@@ -10,11 +10,12 @@ use App\Http\Requests;
 class LoginController extends FrontendController
 {
     public function login(){
+        $categories = $this->categories;
         //$isMobile = $this->isMobile();
 
         if(empty(session('user')))
         {
-            return view('frontend.pc.login');
+            return view('frontend.pc.login',compact('categories'));
         }else{
             return redirect('/');
         }
