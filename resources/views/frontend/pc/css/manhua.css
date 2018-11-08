@@ -344,7 +344,7 @@ text-overflow: ellipsis;-webkit-box-orient: vertical;-webkit-line-clamp: 4;}
 .fi_top_r i{font-style: normal;color:#fff;}
 .fi_top_l a{display: inline-block;cursor:pointer;vertical-align: middle;}
 .fi_top_l a:hover{color:#fff;}
-.fi_logo{background: url(../images/logo3.png) no-repeat;width: 136px;height: 30px;}
+.fi_logo{background: url(../images/logo3.png) no-repeat;width: 178px;height: 40px;}
 .fi_quanping{font-size: 12px;color:#ccc;margin-left: 24px;}
 
 .fi_foot{position: fixed;height:50px;line-height:50px;width:100%;left:0;top:0;background: rgba(19,19,19,.98);box-shadow: 0 0 1px #333;z-index:93;display: none;}
