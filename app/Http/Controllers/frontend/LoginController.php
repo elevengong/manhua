@@ -10,12 +10,13 @@ use App\Http\Requests;
 class LoginController extends FrontendController
 {
     public function login(){
+        $attribute = $this->attribute;
         $categories = $this->categories;
         //$isMobile = $this->isMobile();
 
         if(empty(session('user')))
         {
-            return view('frontend.pc.login',compact('categories'));
+            return view('frontend.pc.login',compact('categories','attribute'));
         }else{
             return redirect('/');
         }
@@ -27,6 +28,8 @@ class LoginController extends FrontendController
     }
 
     public function registered(){
+        $attribute = $this->attribute;
+        $categories = $this->categories;
         if(empty(session('user')))
         {
             if(empty(session('daili_id')))
@@ -35,7 +38,7 @@ class LoginController extends FrontendController
             }else{
                 $daili_id = session('daili_id');
             }
-            return view('frontend.pc.registered')->with('daili_id', $daili_id);
+            return view('frontend.pc.registered',compact('attribute','categories'))->with('daili_id', $daili_id);
         }else{
             return redirect('/');
         }
@@ -60,9 +63,9 @@ class LoginController extends FrontendController
                             $result['0']['vip'] = 0;
                             $result['0']['vip_start_time'] = '0000-00-00 00:00:00';
                             $result['0']['vip_end_time'] = '0000-00-00 00:00:00';
-                            $result1 = Users::where('uid',session('uid'))->update(['login_ip'=>$login_ip, 'last_login_time'=>$last_login_time, 'vip' => '0', 'vip_start_time' =>'0000-00-00 00:00:00', 'vip_end_time' =>'0000-00-00 00:00:00']);
+                            $result1 = Users::where('uid',$result[0]['uid'])->update(['login_ip'=>$login_ip, 'last_login_time'=>$last_login_time, 'vip' => '0', 'vip_start_time' =>'0000-00-00 00:00:00', 'vip_end_time' =>'0000-00-00 00:00:00']);
                         }else{
-                            $result1 = Users::where('uid',session('uid'))->update(['login_ip'=>$login_ip, 'last_login_time'=>$last_login_time]);
+                            $result1 = Users::where('uid',$result[0]['uid'])->update(['login_ip'=>$login_ip, 'last_login_time'=>$last_login_time]);
                         }
                         session(['user' => $user_name, 'uid' => $result['0']['uid'],'vip' => $result['0']['vip'],'vip_start_time' => $result['0']['vip_start_time'],'vip_end_time' => $result['0']['vip_end_time']]);
 

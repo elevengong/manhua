@@ -72,19 +72,6 @@
     </div>
 
 </div>
-<!--弹窗-->
-<div class="fi_mask"></div>
-<div class="reg_mask">
-    <p class="reg_mask_bg"></p>
-    <p class="reg_mask_tit">喜欢我们的话可以<span>CTRL+D</span>加入收藏夹哦！</p>
-    <a href="javascript:;" class="reg_mask_button">朕知道了</a>
-</div>
-
-<!--弹窗-->
-<div class="reg_lianjie">
-    <h3>http://www.gumua.com</h3>
-    <a href="javascript:;">确定</a>
-</div>
 
 
 <script>
@@ -93,10 +80,9 @@
         if (seach == "") {
             seach = "一拳超人";
         }
-        window.location.href = "http://www.gumua.com/Seach/1/?ckey=" + seach;
+        window.location.href = "/search/" + seach;
     }
 </script>
-
 
 
 
@@ -115,11 +101,7 @@
 <div class="m_foots">
     <div class="m1100 m_foot">
         <div class="m_foot_link">
-            <a href="javascript:;">关于我们</a>
-            <a href="javascript:;">联系我们</a>
-            <a href="javascript:;">商务合作</a>
-            <a href="javascript:;">免责声明</a>
-            <a href="javascript:;">友情链接</a>
+            <a href="tencent://message/?uin={{$attribute[2]['value']}}">联系QQ:{{$attribute[2]['value']}}</a>
         </div>
         <div class="m_foot_copy">
             CopyRight © 2013年-2018年 gumua.com 18韩漫 All Rights Reserved

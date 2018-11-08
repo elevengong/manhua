@@ -16,13 +16,15 @@ Route::group(['middleware' => ['web']],function () {
     Route::get('/','frontend\IndexController@index');
     Route::get('/index.html','frontend\IndexController@index');
     Route::get('/manhua/{cid}/','frontend\IndexController@manhualist')->where(['cid' => '[0-9]+']);
+    Route::get('/hanman/{finish}','frontend\IndexController@hanmanlist')->where(['finish' => '[0-1]']);
+    Route::get('/hanman/hot','frontend\IndexController@hanmanhotlist');
     Route::get('/manhuaview/{manhua_id}/','frontend\IndexController@manhuaview')->where(['manhua_id' => '[0-9]+']);
     Route::get('/manhuachapter/{manhua_id}/{chapter_id}/','frontend\IndexController@manhuachapterview')->where(['manhua_id' => '[0-9]+'])->where(['chapter_id' => '[0-9]+']);
+    Route::get('/search/{search}/','frontend\IndexController@search');
 
     Route::get('/login','frontend\LoginController@login');
     Route::get('/registered','frontend\LoginController@registered');
 
-    //这需要login才能进去的
 
 
 
@@ -38,8 +40,8 @@ Route::group(['middleware' => ['web']],function () {
     Route::get('/m/manhua/{cid}/','frontend\IndexController@wapmanhualist')->where(['cid' => '[0-9]+']);
     Route::get('/m/manhuaview/{manhua_id}/','frontend\IndexController@wapmanhuaview')->where(['manhua_id' => '[0-9]+']);
     Route::get('/m/manhuachapter/{chapter_id}/','frontend\IndexController@wapmanhuachapterview')->where(['chapter_id' => '[0-9]+']);
-
     Route::get('/m/manhuavipchapter/{chapter_id}/','frontend\IndexController@wapmanhuavipchapterview')->where(['chapter_id' => '[0-9]+']);
+
 
 
     Route::get('/m/user/login','frontend\LoginController@waplogin');

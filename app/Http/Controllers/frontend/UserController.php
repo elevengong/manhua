@@ -4,7 +4,6 @@ namespace App\Http\Controllers\frontend;
 
 use App\Model\ManhuaChapter;
 use App\Model\PayCoinList;
-use App\model\User;
 use App\Model\Users;
 use Illuminate\Http\Request;
 
@@ -14,7 +13,10 @@ class UserController extends FrontendController
 {
     //pc user center
     public function center(){
-        return view('frontend.pc.usercenter')->with('user', session('user'))->with('vip', session('vip'));
+        $attribute = $this->attribute;
+        $categories = $this->categories;
+        $userInfo = Users::find(session('uid'))->toArray();
+        return view('frontend.pc.usercenter',compact('userInfo','attribute','categories'))->with('user', session('user'))->with('vip', session('vip'));
     }
 
     //wap user center
@@ -28,7 +30,9 @@ class UserController extends FrontendController
 
     //pc deposit
     public function deposit(){
-        echo "deposit";exit;
+        $attribute = $this->attribute;
+        $categories = $this->categories;
+        return view('frontend.pc.deposit',compact('attribute','categories'))->with('user', session('user'))->with('vip', session('vip'));
     }
 
     //pc pay

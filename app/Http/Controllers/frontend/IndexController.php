@@ -26,6 +26,14 @@ class IndexController extends FrontendController
         return view('frontend.pc.index',compact('lastUpdateManhua','hotManhua','completeManhua','attribute','categories'))->with('user', session('user'))->with('vip', session('vip'));
     }
 
+    //pc search
+    public function search(Request $request,$search){
+        $attribute = $this->attribute;
+        $categories = $this->categories;
+        $manhuaList = Manhua::where('name','like','%'.$search.'%')->orderBy('views','desc')->paginate(30);
+        return view('frontend.pc.search',compact('manhuaList','attribute','categories','search'))->with('user', session('user'))->with('vip', session('vip'));
+
+    }
 
 
 
@@ -39,7 +47,22 @@ class IndexController extends FrontendController
         $attribute = $this->attribute;
         $categories = $this->categories;
         $manhuaList = Manhua::where('cid',$cid)->where('status',1)->orderBy('manhua_id','desc')->paginate(30);
+        return view('frontend.pc.manhualist',compact('manhuaList','attribute','categories'))->with('user', session('user'))->with('vip', session('vip'));
+    }
 
+    //pc韩漫列表
+    public function hanmanlist(Request $request,$finish){
+        $attribute = $this->attribute;
+        $categories = $this->categories;
+        $manhuaList = Manhua::where('cid',1)->where('finish',$finish)->orderBy('manhua_id','desc')->paginate(30);
+        return view('frontend.pc.manhualist',compact('manhuaList','attribute','categories'))->with('user', session('user'))->with('vip', session('vip'));
+    }
+
+    //pc热门韩漫列表
+    public function hanmanhotlist(Request $request){
+        $attribute = $this->attribute;
+        $categories = $this->categories;
+        $manhuaList = Manhua::where('cid',1)->orderBy('views','desc')->paginate(30);
         return view('frontend.pc.manhualist',compact('manhuaList','attribute','categories'))->with('user', session('user'))->with('vip', session('vip'));
     }
 
@@ -90,6 +113,7 @@ class IndexController extends FrontendController
 
         $chapterList = ManhuaChapter::select('manhua_id','chapter_id','chapter_name')->where('manhua_id',$manhua_id)->where('status',1)->orderBy('priority','asc')->get()->toArray();
         ManhuaChapter::where('chapter_id',$chaper_id)->increment('views',1);
+        Manhua::where('manhua_id',$manhua_id)->increment('views',1);
         //检查当前用户是否有购买当前漫画章节or用户就是vip
 
         $buyStatus = PayCoinList::where('uid',session('uid'))->where('manhua_id',$manhua_id)->where('chapter_id',$chaper_id)->get()->toArray();
