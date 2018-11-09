@@ -28,7 +28,7 @@
              <div class="ov m_new_top">
                  <span class="fl m_new_img"></span>
 
-                 <a href="/Manhua/" class="fr m_new_more">更多</a>
+                 <a href="/hanman/0" class="fr m_new_more">更多</a>
              </div>
              <ul class="ov m_new_ul">
                  @foreach($lastUpdateManhua as $manhua)
@@ -50,7 +50,7 @@
              <div class="ov m_new_top">
                  <span class="fl m_hot_img"></span>
 
-                 <a href="/Manhua/" class="fr m_new_more">更多</a>
+                 <a href="/hanman/hot" class="fr m_new_more">更多</a>
              </div>
              <ul class="ov m_new_ul">
                  @foreach($hotManhua as $manhua)
@@ -71,7 +71,7 @@
      <div class="m_end">
          <div class="ov m_new_top">
              <span class="fl m_end_img"></span>
-             <a href="/Manhua/" class="fr m_new_more">更多</a>
+             <a href="/hanman/1" class="fr m_new_more">更多</a>
          </div>
          <div class="ov m_day_tj">
 

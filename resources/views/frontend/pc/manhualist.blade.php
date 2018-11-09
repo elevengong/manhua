@@ -21,5 +21,10 @@
 
 
     </div>
+    <script>
+        $('.m_nav a').removeClass('active');
+        $('.m_nav a').eq({{$num}}).addClass('active');
+
+    </script>
 
 @endsection

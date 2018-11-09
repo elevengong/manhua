@@ -21,6 +21,7 @@
     <link href="<?php echo asset( "/resources/views/frontend/pc/css/reset.css") ?>" rel="stylesheet" />
     <link href="<?php echo asset( "/resources/views/frontend/pc/css/swiper-3.4.2.min.css") ?>" rel="stylesheet" />
 
+
 </head>
 <body class="r_body">
 
@@ -132,8 +133,8 @@
 
     </div>
     <div class="r_img ">
-        <img src="{{$attribute[1]['value']}}/public/manhua/{{$manhuaPhotos[0]['photo']}}" alt="{{$manhua[0]['name']}} 第{{$manhuaChapter[0]['chapter_name']}}话">
-        <img src="{{$attribute[1]['value']}}/public/manhua/{{$manhuaPhotos[1]['photo']}}" alt="{{$manhua[0]['name']}} 第{{$manhuaChapter[0]['chapter_name']}}话">
+        <img class="lazy" data-original="{{$attribute[1]['value']}}/public/manhua{{$manhuaPhotos[0]['photo']}}" src="/resources/views/frontend/pc/images/load.gif" alt="{{$manhua[0]['name']}} 第{{$manhuaChapter[0]['chapter_name']}}话">
+        <img class="lazy" data-original="{{$attribute[1]['value']}}/public/manhua{{$manhuaPhotos[1]['photo']}}" src="/resources/views/frontend/pc/images/load.gif" alt="{{$manhua[0]['name']}} 第{{$manhuaChapter[0]['chapter_name']}}话">
     </div>
     <div class="shade">
         @if(isset($user))
@@ -183,19 +184,23 @@
     </div>
 </div>
 
-
 <script src="<?php echo asset( "/resources/views/frontend/js/jquery-1.10.1.min.js") ?>"></script>
 <script src="<?php echo asset( "/resources/views/frontend/js/swiper-3.4.2.jquery.min.js") ?>"></script>
 <script src="<?php echo asset( "/resources/views/frontend/js/manhua.js") ?>"></script>
 <script src="<?php echo asset( "/resources/views/frontend/js/layer/layer.js") ?>"></script>
+<script src="<?php echo asset( "/resources/views/frontend/js/jquery.lazyload.min.js") ?>"></script>
 
 <script>
+    $(function() {
+        $("img.lazy").lazyload({effect: "fadeIn"});
+    });
+
     function paychapter(chapter_id) {
         var index = layer.open({
             type: 2,
             title: "购买漫画章节",
             closeBtn: 0,
-            area: ['600px', '500px'], //宽高
+            area: ['400px', '300px'], //宽高
             shadeClose: true,
             resize:false,
             content: '/user/pay/' + chapter_id
@@ -217,6 +222,6 @@
         if (seach == "") {
             seach = "一拳超人";
         }
-        window.location.href = "http://www.gumua.com/Seach/1/?ckey=" + seach;
+        window.location.href = "/search/" + seach;
     }
 </script>

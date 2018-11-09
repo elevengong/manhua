@@ -1,6 +1,7 @@
 @extends("frontend.pc.layout")
 @section('content')
 
+
     <div class="d_bgs">
         <div class="m1100 d_bgi">
             <a class="fl d_bgi_href" href="javascript:;"><img src="{{$attribute[1]['value'].$manhua[0]['cover']}}"></a>
@@ -23,8 +24,7 @@
                     <span>人气：<i>{{$manhua[0]['views']}}</i></span>
                 </div>
                 <div class="d_bg_b">
-                    <a href="/manhuachapter/???" class="d_bg_read">开始阅读</a>
-                    <a href="javascript:;" class="d_bg_collect"><i></i>收藏</a>
+                    <a href="/manhuachapter/{{$chapterList[0]['manhua_id']}}/{{$chapterList[0]['chapter_id']}}" class="d_bg_read">开始阅读</a>
                 </div>
                 <span class="m_day_score"><i>9</i></span>
             </div>

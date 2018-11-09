@@ -21,6 +21,7 @@ Route::group(['middleware' => ['web']],function () {
     Route::get('/manhuaview/{manhua_id}/','frontend\IndexController@manhuaview')->where(['manhua_id' => '[0-9]+']);
     Route::get('/manhuachapter/{manhua_id}/{chapter_id}/','frontend\IndexController@manhuachapterview')->where(['manhua_id' => '[0-9]+'])->where(['chapter_id' => '[0-9]+']);
     Route::get('/search/{search}/','frontend\IndexController@search');
+    Route::get('/vip/','frontend\IndexController@vip');
 
     Route::get('/login','frontend\LoginController@login');
     Route::get('/registered','frontend\LoginController@registered');
@@ -68,16 +69,6 @@ Route::group(['middleware' => ['web','user.login']],function () {
     Route::any('/backend/uploadphoto/{id}','MyController@uploadphoto');
 });
 
-
-//---------------------pc前端------------------------
-
-//Route::any('/getadphoto/{uid}','frontend\IndexController@getAdPhoto')->where(['uid' => '[0-9]+']);
-//Route::any('/test','frontend\IndexController@test');
-//Route::group(['middleware' => ['cors']],function () {
-//
-//
-//
-//});
 
 
 

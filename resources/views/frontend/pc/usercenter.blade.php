@@ -22,7 +22,7 @@
                         <li><a href="/user/deposit">充值</a></li>
                         {{--<li><a href="#">充值记录</a></li>--}}
                         {{--<li><a href="#">购买记录</a></li>--}}
-                        <li><a href="#">成为代理</a></li>
+                        <li><a href="{{$attribute[3]['value']}}/register" target="_blank">成为代理</a></li>
                     </ul>
                 </div></div>
         </div>

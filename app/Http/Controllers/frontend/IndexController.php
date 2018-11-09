@@ -46,24 +46,31 @@ class IndexController extends FrontendController
     public function manhualist(Request $request,$cid){
         $attribute = $this->attribute;
         $categories = $this->categories;
+        $num = 1;
         $manhuaList = Manhua::where('cid',$cid)->where('status',1)->orderBy('manhua_id','desc')->paginate(30);
-        return view('frontend.pc.manhualist',compact('manhuaList','attribute','categories'))->with('user', session('user'))->with('vip', session('vip'));
+        return view('frontend.pc.manhualist',compact('manhuaList','attribute','categories','num'))->with('user', session('user'))->with('vip', session('vip'));
     }
 
     //pc韩漫列表
     public function hanmanlist(Request $request,$finish){
         $attribute = $this->attribute;
         $categories = $this->categories;
+        if($finish==0){
+            $num = 2;
+        }else{
+            $num = 3;
+        }
         $manhuaList = Manhua::where('cid',1)->where('finish',$finish)->orderBy('manhua_id','desc')->paginate(30);
-        return view('frontend.pc.manhualist',compact('manhuaList','attribute','categories'))->with('user', session('user'))->with('vip', session('vip'));
+        return view('frontend.pc.manhualist',compact('manhuaList','attribute','categories','num'))->with('user', session('user'))->with('vip', session('vip'));
     }
 
     //pc热门韩漫列表
     public function hanmanhotlist(Request $request){
         $attribute = $this->attribute;
         $categories = $this->categories;
+        $num = 4;
         $manhuaList = Manhua::where('cid',1)->orderBy('views','desc')->paginate(30);
-        return view('frontend.pc.manhualist',compact('manhuaList','attribute','categories'))->with('user', session('user'))->with('vip', session('vip'));
+        return view('frontend.pc.manhualist',compact('manhuaList','attribute','categories','num'))->with('user', session('user'))->with('vip', session('vip'));
     }
 
     //wap分类列表
@@ -137,6 +144,11 @@ class IndexController extends FrontendController
     }
 
 
+    public function vip(){
+        $attribute = $this->attribute;
+        $categories = $this->categories;
+        return view('frontend.pc.vip',compact('attribute','categories'))->with('user', session('user'))->with('vip', session('vip'));
+    }
 
 
 

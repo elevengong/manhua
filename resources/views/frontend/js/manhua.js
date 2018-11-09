@@ -204,7 +204,7 @@ $(".red_total_a3 span").after("<div class='Ashar_box'><div class='bdsharebuttonb
             }
 
             $(".fi_classify_ul").css("height",$(window).height()/2);
-            $(".shade").css("height",$(document).height());
+            $(".shade").css("height",$(document).height()*1.3);
 
             //弹窗
             $(".fi_dialog_r span").click(function(){

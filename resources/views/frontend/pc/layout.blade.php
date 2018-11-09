@@ -50,7 +50,7 @@
                     <span><a href="/registered">注册</a></span>
                 </li>
                 <li class="reg_share">
-                    <span><a href="/vip">VIP</a></span>
+                    <span><a href="{{$attribute[3]['value']}}" target="_blank">代理登陆</a></span>
                 </li>
                 @else
                     <li class="reg_share">
@@ -60,7 +60,7 @@
                         <span><a href="/user/center">用户中心</a></span>
                     </li>
                     <li class="reg_share">
-                        <span><a href="/user/deposit">充值VIP</a></span>
+                        <span><a href="/user/deposit">VIP充值</a></span>
                     </li>
                     <li class="reg_share">
                         <span><a href="/user/logout">注销</a></span>

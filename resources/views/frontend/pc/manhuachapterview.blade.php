@@ -21,10 +21,9 @@
     <link href="<?php echo asset( "/resources/views/frontend/pc/css/reset.css") ?>" rel="stylesheet" />
     <link href="<?php echo asset( "/resources/views/frontend/pc/css/swiper-3.4.2.min.css") ?>" rel="stylesheet" />
 
+
 </head>
 <body class="r_body">
-
-
 <div class="fi_foot">
     <div class="fi_top_l">
         <a class="fi_logo" href="/"></a>
@@ -134,12 +133,12 @@
     </div>
     <div class="r_img ">
         @foreach($manhuaPhotos as $photo)
-        <img src="{{$attribute[1]['value']}}/public/manhua/{{$photo['photo']}}" alt="{{$manhua[0]['name']}} 第{{$manhuaChapter[0]['chapter_name']}}话">
+        <img class="lazy" data-original="{{$attribute[1]['value']}}/public/manhua/{{$photo['photo']}}" src="/resources/views/frontend/pc/images/load.gif" alt="{{$manhua[0]['name']}} 第{{$manhuaChapter[0]['chapter_name']}}话">
         @endforeach
 
         <!--免责声明-->
         <div class="read_dis">
-            本页内容均来自互联网，XXX与内容的出处无关，如有违反您的权益，或您发现有任何不良内容或图片错误，<a href="javascript:;">请联系我们</a>，我们将修正该动漫图片。
+            本页内容均来自互联网，18韩漫与内容的出处无关，如有违反您的权益，或您发现有任何不良内容或图片错误，<a href="javascript:;">请联系我们</a>，我们将修正该动漫图片。
         </div>
 
     </div>
@@ -173,11 +172,14 @@
 <script src="<?php echo asset( "/resources/views/frontend/js/jquery-1.10.1.min.js") ?>"></script>
 <script src="<?php echo asset( "/resources/views/frontend/js/swiper-3.4.2.jquery.min.js") ?>"></script>
 <script src="<?php echo asset( "/resources/views/frontend/js/manhua.js") ?>"></script>
-
+<script src="<?php echo asset( "/resources/views/frontend/js/jquery.lazyload.min.js") ?>"></script>
 <script>
     function cpage(value) {
         window.location.href = "/manhuachapter/{{$manhua_id}}/" + value;
     }
+    $(function() {
+        $("img.lazy").lazyload({effect: "fadeIn"});
+    });
 </script>
 </body>
 
@@ -190,6 +192,6 @@
         if (seach == "") {
             seach = "一拳超人";
         }
-        window.location.href = "http://www.gumua.com/Seach/1/?ckey=" + seach;
+        window.location.href = "/search/" + seach;
     }
 </script>

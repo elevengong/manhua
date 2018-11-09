@@ -12,16 +12,18 @@
     }
     .button a{
         font-size: 19px;
-        width: 100px;
+        /* width: 300px; */
         height: 28px;
         line-height: 88px;
         text-align: center;
         background-color: #fe7f1f;
         color: #fff;
         display: inline;
-        border-radius: 10px;
+        border-radius: 5px;
         box-shadow: 0px 8px 10px #FFC49A;
         text-decoration: none;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
 </style>
@@ -31,6 +33,7 @@
 当前可用金币数:{{$user[0]['coin']}}<br>
 当前漫画章节需要的金币数:{{$chapter[0]['coin']}}金币<br>
 购买后金币数余额:{{$user[0]['coin']-10}}<br>
+@if($user[0]['coin']-10 < 0)金币余额不足，请及时充值或者成为VIP<br> @endif
 成为VIP后，用户不用再用金币购买章节<br>
 
 <div class="button">
