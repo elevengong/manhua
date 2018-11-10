@@ -61,7 +61,7 @@ Route::group(['middleware' => ['web','user.login']],function () {
 
     //wap
     Route::get('/m/user/center','frontend\UserController@wapcenter');
-    Route::get('/m/user/pay','frontend\UserController@wappay');
+    Route::get('/m/user/deposit','frontend\UserController@wapdeposit');
 
     //图片上传
     Route::any('/backend/upload','backend\JobController@upload');

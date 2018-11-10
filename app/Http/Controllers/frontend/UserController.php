@@ -86,7 +86,8 @@ class UserController extends FrontendController
 
 
     //wap user pay
-    public function wappay(){
-        return view('frontend.mobile.wappay')->with('user', session('user'))->with('vip', session('vip'));
+    public function wapdeposit(){
+        $userInfo = Users::find(session('uid'))->toArray();
+        return view('frontend.mobile.deposit',compact('userInfo'))->with('user', session('user'))->with('vip', session('vip'));
     }
 }

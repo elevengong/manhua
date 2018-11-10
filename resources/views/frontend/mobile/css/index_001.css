@@ -1,0 +1,213 @@
+@CHARSET "UTF-8";
+.head-uname{
+	height:116px;
+	background-color:#FFF;
+	border-bottom:1px solid #ddd;
+}
+.head-uname .head-img{
+	width:84px;
+	padding:18px 30px;
+	padding-right:16px;
+	float:left;
+	padding-bottom:16px;
+}
+.head-uname .head-img img{
+	width:78px;
+	height:78px;
+	border:3px solid;
+	border-color: rgba(255,126,32,0.1);
+	border-radius:60px;
+}
+
+.head-uname .uname-item{
+	width:570px;
+	height:76px;
+	float:left;
+	padding-top:20px;
+	padding-bottom:20px;
+}
+.head-uname .uname-item .nickname{
+	font-size:26px;
+	color:#010101;
+}
+.head-uname .uname-item .uname-password{
+	font-size:26px;
+	color:#010101;
+	padding-top:12px;
+}
+.head-uname .uname-item .uname-password .light{
+	color:#ff7e20;
+	padding-left:8px;
+	padding-right:8px;
+}
+
+/* .user-balance{
+	width:750px;
+	height:96px;
+	border-bottom:1px solid #ddd;
+	background-color:#FFF;
+}
+.user-balance .user-balance-left{
+	width:180px;
+	float:left;
+	font-size:34px;
+	color:#010101;
+	line-height:96px;
+	text-align:center;
+	
+}
+.user-balance .user-balance-right{
+	width:540px;
+	float:left;
+	font-size:26px;
+	color:#666;
+	text-align:right;
+	padding-right:30px;
+	line-height:96px;
+}
+.user-balance .user-balance-right .light{
+	color:#ff7e20;
+	padding-left:8px;
+	padding-right:8px;
+} */
+
+.goods-main{
+	padding:11px 20px;
+}
+.goods-main .goods-item{
+	width:333px;
+	height:160px;
+	border:1px solid #ddd;
+	border-radius:8px;
+	float:left;
+	margin:15px 10px;
+	background-color:#FFF;
+}
+.goods-main .goods-item.pitch{
+	border:1px solid #fe7f1f;
+}
+
+.goods-main .goods-item.hot2{
+	background:url(./../../img/pay/index/superscript.png) no-repeat right top #FFF;
+}
+.goods-main .goods-item .goods-item-left{
+	width:193px;
+	height:116px;
+	margin:22px;
+	margin-right:0px;
+	float:left;
+}
+.goods-main .goods-item .goods-item-left .goods-item-money{
+	font-size:32px;
+	color:#010101;
+}
+.goods-main .goods-item .goods-item-left .goods-item-money .hot{
+	padding-left:10px;
+	vertical-align: top;
+}
+.goods-main .goods-item .goods-item-left .goods-item-name{
+	padding-top:12px;
+	font-size:22px;
+	color:#ff7e20;
+}
+.goods-main .goods-item .goods-item-left .goods-item-explain{
+	padding-top:4px;
+	font-size:20px;
+	color:#999;
+}
+.goods-main .goods-item .goods-item-right{
+	float:left;
+	width:100px;
+	height:160px;
+}
+
+.button {
+	text-align:center;
+	padding-top:50px;
+	padding-bottom:50px;
+}
+.button a{
+	font-size:36px;
+	width:690px;
+	height:88px;
+	line-height:88px;
+	text-align:center;
+	background-color:#fe7f1f;
+	color:#fff;
+	display: inline-block;
+	border-radius:44px;
+	box-shadow:0px 8px 10px #FFC49A;
+}
+
+.pay-shade{
+	width:750px;
+	height:100%;
+	position:absolute;
+	top:0px;
+	z-index:2;
+	background-color:rgba(0,0,0,0.26);
+}
+.pay-shade .pay-msg-main{
+	width:490px;
+	height:210px;
+	background-color:#FFF;
+	border-radius:13px;
+	margin:0 auto;
+	margin-top:420px;
+	position: relative;
+}
+.pay-shade .pay-msg-main .pay-msg-icon{
+	width:195px;
+	height:210px;
+	float:left;
+}
+.pay-shade .pay-msg-main .pay-msg-icon img {
+	padding-left:60px;
+	padding-top:52px;
+}
+.pay-shade .pay-msg-main .pay-msg-content{
+	width:295px;
+	height:210px;
+	float:left;
+}
+.pay-shade .pay-msg-main .pay-msg-content .pay-msg-title{
+	font-size:36px;
+	color:#010101;
+	padding-top:54px;
+}
+.pay-shade .pay-msg-main .pay-msg-content .pay-msg-cont{
+	font-size:28px;
+	color:#ff7e20;
+	padding-top:14px;
+}
+.pay-shade .pay-msg-main .pay-msg-close{
+	position: absolute;
+	top:0px;
+	right:0px;
+}
+.alipay{
+    margin:0 auto;
+    float:left;
+    width:333px;
+    height:78px;
+    margin: 15px 10px;
+	background-color: #FFF;
+	border:1px solid #FFF;
+	border-radius: 8px;
+}
+.wxpay{
+    margin:0 auto;
+    float:left;
+    width:333px;
+    height:78px;
+    margin: 15px 10px;
+	background-color: #FFF;
+	border:1px solid #FFF;
+	border-radius: 8px;
+}
+.alipay img, .wxpay img{
+	padding:11px;
+}
+.alipay.pitch, .wxpay.pitch{
+	border:1px solid #fe7f1f;
+}

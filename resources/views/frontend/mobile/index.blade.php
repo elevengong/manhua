@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
-    <title></title>
+    <title>18韩漫</title>
     <script>
         var deviceWidth = parseInt(window.screen.width);  //获取当前设备的屏幕宽度
         var deviceScale = deviceWidth / 750;  //得到当前设备屏幕与720之间的比例，之后我们就可以将网页宽度固定为720px

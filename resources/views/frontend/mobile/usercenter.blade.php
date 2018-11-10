@@ -22,7 +22,6 @@
             document.write('<meta name="viewport" content="width=750, user-scalable=no">');
         }
 
-        var site_url_static = 'http://img.18manhua.com/static/';
     </script>
 
 
@@ -51,10 +50,10 @@
     <!-- </div> -->
     <div class="head-uname">
         <div class="head-img">
-            <img src="http://img.18manhua.com/static/img/default-head.png" />
+            <img src="<?php echo asset( "/resources/views/frontend/mobile/images/default-head.png") ?>" />
         </div>
         <div class="uname-item">
-            <div class="nickname">账号：{{$user}}(@if($vip==1)VIP @else 普通用户@endif )</div>
+            <div class="nickname">账号：{{$user}}@if($userInfo['vip']==1)(<font style="color: #ff7e20;">VIP</font>) @else (普通用户)@endif</div>
             <div class="uname-password">
                 金币余额<span class="light">{{$userInfo['coin']}}</span>个
             </div>
@@ -65,12 +64,12 @@
     <div class="user-center-msg">
         <div class="user-center-msg-content">请截图保存网址： <span class="light">{{$attribute[0]['value']}}</span></div>
     </div>
-    <a href="/pay/index">
+    <a href="/m/user/deposit">
         <div class="item-line">
             <div class="item-line-icon">
                 <img src="<?php echo asset( "/resources/views/frontend/mobile/images/gold.png") ?>" />
             </div>
-            <div class="item-line-title">金币充值</div>
+            <div class="item-line-title">充值</div>
             <div class="item-line-explain"><span class="gray">金币余额</span>{{$userInfo['coin']}}<span class="gray">个</span></div>
             <div class="item-line-direction">
                 <img src="<?php echo asset( "/resources/views/frontend/mobile/images/next1.png") ?>" />
@@ -82,50 +81,38 @@
     <a href="#">
         <div class="item-line border-bottom">
             <div class="item-line-icon">
-                <img src="http://img.18manhua.com/static/img/user/center/browse-record.png" />
+                <img src="<?php echo asset( "/resources/views/frontend/mobile/images/browse-record.png") ?>" />
             </div>
             <div class="item-line-title">VIP到期时间</div>
             <div class="item-line-explain">{{$userInfo['vip_end_time']}}</div>
             <div class="item-line-direction">
-                <img src="http://img.18manhua.com/static/img/user/center/next.png" />
+                <img src="<?php echo asset( "/resources/views/frontend/mobile/images/next1.png") ?>" />
             </div>
         </div>
     </a>
     @endif
-    <a href="/user/set_phone">
-        <div class="item-line border-bottom">
-            <div class="item-line-icon">
-                <img src="http://img.18manhua.com/static/img/user/center/phone.png" />
-            </div>
-            <div class="item-line-title">绑定手机号</div>
-            <div class="item-line-explain">绑定送200金币</div>
-            <div class="item-line-direction">
-                <img src="http://img.18manhua.com/static/img/user/center/next.png" />
-            </div>
-        </div>
-    </a>
-    <a href="/user/set_pwd">
-        <div class="item-line border-bottom">
-            <div class="item-line-icon">
-                <img src="http://img.18manhua.com/static/img/user/center/set-uname-password.png" />
-            </div>
-            <div class="item-line-title">修改账号密码</div>
-            <div class="item-line-explain"></div>
-            <div class="item-line-direction">
-                <img src="http://img.18manhua.com/static/img/user/center/next.png" />
-            </div>
-        </div>
-    </a>
+    {{--<a href="/user/set_pwd">--}}
+        {{--<div class="item-line border-bottom">--}}
+            {{--<div class="item-line-icon">--}}
+                {{--<img src="http://img.18manhua.com/static/img/user/center/set-uname-password.png" />--}}
+            {{--</div>--}}
+            {{--<div class="item-line-title">修改账号密码</div>--}}
+            {{--<div class="item-line-explain"></div>--}}
+            {{--<div class="item-line-direction">--}}
+                {{--<img src="" />--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</a>--}}
     <div class="interval"></div>
     <a href="/user/logout">
         <div class="item-line border-bottom">
             <div class="item-line-icon">
-                <img src="http://img.18manhua.com/static/img/user/center/logout.png" />
+                <img src="<?php echo asset( "/resources/views/frontend/mobile/images/logout.png") ?>" />
             </div>
             <div class="item-line-title">退出</div>
             <div class="item-line-explain"></div>
             <div class="item-line-direction">
-                <img src="http://img.18manhua.com/static/img/user/center/next.png" />
+                <img src="<?php echo asset( "/resources/views/frontend/mobile/images/next1.png") ?>" />
             </div>
         </div>
     </a>
