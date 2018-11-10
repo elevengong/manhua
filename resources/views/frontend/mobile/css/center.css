@@ -1,0 +1,147 @@
+@CHARSET "UTF-8";
+.head-uname{
+	height:116px;
+	background-color:#FFF;
+}
+.head-uname .head-img{
+	width:84px;
+	padding:14px 30px;
+	padding-right:16px;
+	float:left;
+}
+.head-uname .head-img img{
+	width:78px;
+	height:78px;
+	border:3px solid;
+	border-color: rgba(255,126,32,0.1);
+	border-radius:60px;
+}
+
+.head-uname .uname-item{
+	width:570px;
+	height:76px;
+	float:left;
+	padding-top:20px;
+	padding-bottom:20px;
+}
+.head-uname .uname-item .nickname{
+	font-size:26px;
+	color:#010101;
+}
+.head-uname .uname-item .uname-password{
+	font-size:26px;
+	color:#010101;
+	padding-top:12px;
+}
+.head-uname .uname-item .uname-password .light{
+	color:#ff7e20;
+	padding-left:8px;
+	padding-right:8px;
+}
+.user-center-msg{
+	width:750px;
+	height:68px;
+	font-size:30px;
+	color:#010101;
+	background-color:#FFF5d9;
+	border-top:1px solid #ddd;
+	border-bottom:1px solid #ddd;
+}
+.user-center-msg-content{
+	text-align:left;
+	height:68px;
+	line-height:68px;
+	float:left;
+	padding-left:68px;
+}
+.user-center-msg-content .light{
+	color:#ff7e20;
+}
+
+.item-line{
+	height:110px;
+	background-color:#FFF;
+	position:relative;
+}
+.item-line.border-bottom{
+	border-bottom:1px solid #ddd;
+}
+
+.item-line .item-line-icon{
+	position:absolute;
+	left:46px;
+	height:110px;
+	line-height:110px;
+	vertical-align: middle;
+	width:44px;
+}
+.item-line .item-line-title{
+	position:absolute;
+	left:110px;
+	height:110px;
+	line-height:110px;
+	font-size:34px;
+	color:#010101;
+}
+.item-line .item-line-explain{
+	position:absolute;
+	right:90px;
+	height:110px;
+	line-height:110px;
+	font-size:26px;
+	color:#FF9320;
+}
+.item-line .item-line-explain .gray{
+	color:#666;
+	padding-left:5px;
+	padding-right:5px;
+}
+.item-line .item-line-direction{
+	position:absolute;
+	right:50px;
+	height:110px;
+	line-height:110px;
+	vertical-align: middle;
+	width:20px;
+}
+
+.loginform .input_field, .input_form .recaptcha-wrap {
+	position: relative;
+	margin: 20px auto;
+	width: 432px;
+	padding-top: 33px;
+}
+
+.loginform .input_field .input_fieldTitle {
+	margin-bottom: 5px;
+	color: #333;
+	font-size: 26px;
+}
+.loginform .input_fieldTitle {
+	float: left;
+}
+
+.loginform input[type="text"], .loginform input[type="password"], .loginform input[type="email"] {
+	border-bottom: 1px solid #E3E3E3 !important;
+	border: 0;
+	border-radius: 0;
+	-webkit-appearance: none;
+}
+.loginform .input_field input {
+	width: 100%;
+	height: 45px;
+	color: #333;
+	font-size: 20px;
+}
+
+#btn_login, #btn_clear, #btn_registered {
+	width: 200px;
+	height: 45px;
+	line-height: 45px;
+	color: #fff;
+	font-size: 15px;
+	letter-spacing: 1px;
+	background-color: #FF8382;
+	border-radius: 0;
+	border: 0px;
+}

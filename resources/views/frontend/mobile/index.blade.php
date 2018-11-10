@@ -112,56 +112,22 @@
             <span class="recommend-title-text">最新更新</span>
             <span class="recommend-title-right"><hr></span>
         </div>
-
-        <a href="/caricature/chapter?cid=1">
+        @foreach($lastUpdateManhua as $manhua)
+        <a href="/m/manhuaview/{{$manhua['manhua_id']}}/asc">
             <div class="recommend-item">
-                <div class="item-img"><img src="http://www.manhua.com/resources/views/frontend/pc/images/12.jpg" /></div>
-                <div class="item-name">Roommate</div>
+                <div class="item-img"><img src="{{$attribute[1]['value'].$manhua['cover']}}" /></div>
+                <div class="item-name">{{$manhua['name']}}</div>
                 <div class="item-short-explain"></div>
             </div>
         </a>
-        <a href="/caricature/chapter?cid=19">
-            <div class="recommend-item">
-                <div class="item-img"><img src="http://www.manhua.com/resources/views/frontend/pc/images/12.jpg" /></div>
-                <div class="item-name">H-Mate</div>
-                <div class="item-short-explain"></div>
-            </div>
-        </a>
-        <a href="/caricature/chapter?cid=20">
-            <div class="recommend-item">
-                <div class="item-img"><img src="http://www.manhua.com/resources/views/frontend/pc/images/12.jpg" /></div>
-                <div class="item-name">30cm契约</div>
-                <div class="item-short-explain"></div>
-            </div>
-        </a>
-        <a href="/caricature/chapter?cid=21">
-            <div class="recommend-item">
-                <div class="item-img"><img src="http://www.manhua.com/resources/views/frontend/pc/images/12.jpg" /></div>
-                <div class="item-name">偷窥</div>
-                <div class="item-short-explain"></div>
-            </div>
-        </a>
-        <a href="/caricature/chapter?cid=22">
-            <div class="recommend-item">
-                <div class="item-img"><img src="http://www.manhua.com/resources/views/frontend/pc/images/12.jpg" /></div>
-                <div class="item-name">高跟鞋</div>
-                <div class="item-short-explain"></div>
-            </div>
-        </a>
-        <a href="/caricature/chapter?cid=23">
-            <div class="recommend-item">
-                <div class="item-img"><img src="http://www.manhua.com/resources/views/frontend/pc/images/12.jpg" /></div>
-                <div class="item-name">朋友妻</div>
-                <div class="item-short-explain"></div>
-            </div>
-        </a>
+        @endforeach
 
         <div style="clear:both;"></div>
     </div>
     <!-- <div class="interval"></div> -->
 
     <div class="banner-recommend">
-        <a href="/pay/index">
+        <a href="/m/user/pay">
             <img src="<?php echo asset( "/resources/views/frontend/mobile/images/ad_img.png") ?>" />
         </a>
     </div>
@@ -174,49 +140,15 @@
             <span class="recommend-title-text">热门推荐</span>
             <span class="recommend-title-right"><hr></span>
         </div>
-        <a href="/caricature/chapter?cid=24">
+        @foreach($hotManhua as $manhua)
+            <a href="/m/manhuaview/{{$manhua['manhua_id']}}/asc">
             <div class="recommend-item">
-                <div class="item-img"><img src="http://www.manhua.com/resources/views/frontend/pc/images/12.jpg" /></div>
-                <div class="item-name">愉快的旅行</div>
+                <div class="item-img"><img src="{{$attribute[1]['value'].$manhua['cover']}}" /></div>
+                <div class="item-name">{{$manhua['name']}}</div>
                 <div class="item-short-explain"></div>
             </div>
         </a>
-        <a href="/caricature/chapter?cid=25">
-            <div class="recommend-item">
-                <div class="item-img"><img src="http://www.manhua.com/resources/views/frontend/pc/images/12.jpg" /></div>
-                <div class="item-name">无人岛</div>
-                <div class="item-short-explain"></div>
-            </div>
-        </a>
-        <a href="/caricature/chapter?cid=26">
-            <div class="recommend-item">
-                <div class="item-img"><img src="http://www.manhua.com/resources/views/frontend/pc/images/12.jpg" /></div>
-                <div class="item-name">猎物</div>
-                <div class="item-short-explain"></div>
-            </div>
-        </a>
-        <a href="/caricature/chapter?cid=24">
-            <div class="recommend-item">
-                <div class="item-img"><img src="http://www.manhua.com/resources/views/frontend/pc/images/12.jpg" /></div>
-                <div class="item-name">愉快的旅行</div>
-                <div class="item-short-explain"></div>
-            </div>
-        </a>
-        <a href="/caricature/chapter?cid=25">
-            <div class="recommend-item">
-                <div class="item-img"><img src="http://www.manhua.com/resources/views/frontend/pc/images/12.jpg" /></div>
-                <div class="item-name">无人岛</div>
-                <div class="item-short-explain"></div>
-            </div>
-        </a>
-        <a href="/caricature/chapter?cid=26">
-            <div class="recommend-item">
-                <div class="item-img"><img src="http://www.manhua.com/resources/views/frontend/pc/images/12.jpg" /></div>
-                <div class="item-name">猎物</div>
-                <div class="item-short-explain"></div>
-            </div>
-        </a>
-
+        @endforeach
     </div>
 </div>
 </body>

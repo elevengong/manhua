@@ -24,11 +24,10 @@
 
         var site_url_static = 'http://img.18manhua.com/static/';
     </script>
-    <script src="http://img.18manhua.com/static/js/jquery.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="http://img.18manhua.com/static/css/comm.css" />
-    <link rel="stylesheet" type="text/css" href="http://img.18manhua.com/static/css/user/center.css" />
-    <script src="http://img.18manhua.com/static/js/user/center.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="<?php echo asset( "/resources/views/frontend/mobile/css/comm.css") ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo asset( "/resources/views/frontend/mobile/css/center.css") ?>" />
 </head>
 <body style="margin: 0px;">
 <div class="main">
@@ -37,7 +36,7 @@
     <div class="main-title">
         <div class="go-back">
             <a href="javascript:history.go(-1);">
-                <img src="http://img.18manhua.com/static/img/back.png" />
+                <img src="<?php echo asset( "/resources/views/frontend/mobile/images/back.png") ?>" />
             </a>
         </div>
         <div class="title">
@@ -45,7 +44,7 @@
         </div>
         <div class="go-home">
             <a href="/m">
-                <img src="http://img.18manhua.com/static/img/home.png" />
+                <img src="<?php echo asset( "/resources/views/frontend/mobile/images/home.png") ?>" />
             </a>
         </div>
     </div>
@@ -55,43 +54,44 @@
             <img src="http://img.18manhua.com/static/img/default-head.png" />
         </div>
         <div class="uname-item">
-            <div class="nickname">账号：dbfx3rb  密码：kg361yc</div>
+            <div class="nickname">账号：{{$user}}(@if($vip==1)VIP @else 普通用户@endif )</div>
             <div class="uname-password">
-                金币余额<span class="light">0</span>个
-                VIP剩余<span class="light">00:00</span>
+                金币余额<span class="light">{{$userInfo['coin']}}</span>个
             </div>
         </div>
     </div>
     <div style="clear:both;"></div>
     <!-- <div class="interval"></div> -->
     <div class="user-center-msg">
-        <div class="user-center-msg-content">请截图保存网址： <span class="light">http://www.18manhua.com</span></div>
+        <div class="user-center-msg-content">请截图保存网址： <span class="light">{{$attribute[0]['value']}}</span></div>
     </div>
     <a href="/pay/index">
         <div class="item-line">
             <div class="item-line-icon">
-                <img src="http://img.18manhua.com/static/img/user/center/gold.png" />
+                <img src="<?php echo asset( "/resources/views/frontend/mobile/images/gold.png") ?>" />
             </div>
             <div class="item-line-title">金币充值</div>
-            <div class="item-line-explain"><span class="gray">金币余额</span>0<span class="gray">个</span><span class="gray">VIP剩余</span>00:00</div>
+            <div class="item-line-explain"><span class="gray">金币余额</span>{{$userInfo['coin']}}<span class="gray">个</span></div>
             <div class="item-line-direction">
-                <img src="http://img.18manhua.com/static/img/user/center/next.png" />
+                <img src="<?php echo asset( "/resources/views/frontend/mobile/images/next1.png") ?>" />
             </div>
         </div>
     </a>
     <div class="interval"></div>
-    <a href="/caricature_read_detail/list">
+    @if($vip==1)
+    <a href="#">
         <div class="item-line border-bottom">
             <div class="item-line-icon">
                 <img src="http://img.18manhua.com/static/img/user/center/browse-record.png" />
             </div>
-            <div class="item-line-title">浏览记录</div>
-            <div class="item-line-explain"></div>
+            <div class="item-line-title">VIP到期时间</div>
+            <div class="item-line-explain">{{$userInfo['vip_end_time']}}</div>
             <div class="item-line-direction">
                 <img src="http://img.18manhua.com/static/img/user/center/next.png" />
             </div>
         </div>
     </a>
+    @endif
     <a href="/user/set_phone">
         <div class="item-line border-bottom">
             <div class="item-line-icon">
@@ -117,7 +117,7 @@
         </div>
     </a>
     <div class="interval"></div>
-    <a href="/login/logout">
+    <a href="/user/logout">
         <div class="item-line border-bottom">
             <div class="item-line-icon">
                 <img src="http://img.18manhua.com/static/img/user/center/logout.png" />

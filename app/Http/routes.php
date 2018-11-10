@@ -25,10 +25,6 @@ Route::group(['middleware' => ['web']],function () {
 
     Route::get('/login','frontend\LoginController@login');
     Route::get('/registered','frontend\LoginController@registered');
-
-
-
-
     Route::post('/user/login','frontend\LoginController@loginprocess');
     Route::post('/user/registered','frontend\LoginController@registeredprocess');
     Route::get('/user/logout','frontend\LoginController@logout');
@@ -40,17 +36,15 @@ Route::group(['middleware' => ['web']],function () {
     Route::get('/m/index.html','frontend\IndexController@wapindex');
     Route::get('/m/manhua/{cid}/','frontend\IndexController@wapmanhualist')->where(['cid' => '[0-9]+']);
     Route::get('/m/manhuaview/{manhua_id}/','frontend\IndexController@wapmanhuaview')->where(['manhua_id' => '[0-9]+']);
-    Route::get('/m/manhuachapter/{chapter_id}/','frontend\IndexController@wapmanhuachapterview')->where(['chapter_id' => '[0-9]+']);
-    Route::get('/m/manhuavipchapter/{chapter_id}/','frontend\IndexController@wapmanhuavipchapterview')->where(['chapter_id' => '[0-9]+']);
+    Route::get('/m/manhuaview/{manhua_id}/{order}','frontend\IndexController@wapmanhuaview')->where(['manhua_id' => '[0-9]+']);
+    Route::get('/m/manhuachapter/{manhua_id}/{chapter_id}/','frontend\IndexController@wapmanhuachapterview')->where(['manhua_id' => '[0-9]+'])->where(['chapter_id' => '[0-9]+']);
 
 
-
-    Route::get('/m/user/login','frontend\LoginController@waplogin');
-    Route::get('/m/user/register','frontend\LoginController@wapregister');
+    Route::get('/m/login','frontend\LoginController@waplogin');
+    Route::get('/m/register','frontend\LoginController@wapregister');
 
     //这需要login才能进去的
-    Route::get('/m/user/center','frontend\UserController@wapcenter');
-    Route::get('/m/user/pay','frontend\UserController@wappay');
+
 
 //    Route::get('/m/manhua/{cid}/','frontend\IndexController@manhualist')->where(['cid' => '[0-9]+']);
 //    Route::get('/m/manhuaview/{manhua_id}/','frontend\IndexController@manhuaview')->where(['manhua_id' => '[0-9]+']);
@@ -59,10 +53,15 @@ Route::group(['middleware' => ['web']],function () {
 });
 
 Route::group(['middleware' => ['web','user.login']],function () {
+    //pc
     Route::get('/user/pay/{chapter_id}','frontend\UserController@pay')->where(['chapter_id' => '[0-9]+']);
     Route::any('/user/paycoin/{chapter_id}','frontend\UserController@paycoin')->where(['chapter_id' => '[0-9]+']);
     Route::get('/user/center','frontend\UserController@center');
     Route::get('/user/deposit','frontend\UserController@deposit');
+
+    //wap
+    Route::get('/m/user/center','frontend\UserController@wapcenter');
+    Route::get('/m/user/pay','frontend\UserController@wappay');
 
     //图片上传
     Route::any('/backend/upload','backend\JobController@upload');

@@ -10,10 +10,12 @@ use App\Http\Requests;
 class LoginController extends FrontendController
 {
     public function login(){
+        $isMobile = $this->isMobile();
+        if($isMobile){
+            return redirect('/m/login');
+        }
         $attribute = $this->attribute;
         $categories = $this->categories;
-        //$isMobile = $this->isMobile();
-
         if(empty(session('user')))
         {
             return view('frontend.pc.login',compact('categories','attribute'));
@@ -27,6 +29,7 @@ class LoginController extends FrontendController
         return view('frontend.mobile.login');
     }
 
+    //pc register
     public function registered(){
         $attribute = $this->attribute;
         $categories = $this->categories;
@@ -42,7 +45,16 @@ class LoginController extends FrontendController
         }else{
             return redirect('/');
         }
+    }
 
+    //wap register
+    public function wapregister(){
+        if(empty(session('user')))
+        {
+            return view('frontend.mobile.registered');
+        }else{
+            return redirect('/m/');
+        }
     }
 
     public function loginprocess(Request $request){

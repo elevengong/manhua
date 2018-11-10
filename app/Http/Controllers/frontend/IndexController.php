@@ -14,7 +14,10 @@ class IndexController extends FrontendController
 
     //pc首页
     public function index(Request $request){
-        //$isMobile = $this->isMobile();
+        $isMobile = $this->isMobile();
+        if($isMobile){
+            return redirect('/m/');
+        }
         $attribute = $this->attribute;
         $categories = $this->categories;
         $lastUpdateManhua = Manhua::select('manhua_id','name','cover','last_update_time')->where('status',1)->orderBy('last_update_time','desc')->get()->take(12)->toArray();
@@ -35,11 +38,12 @@ class IndexController extends FrontendController
 
     }
 
-
-
     //wap首页
     public function wapindex(){
-        return view('frontend.mobile.index')->with('user', session('user'))->with('vip', session('vip'));
+        $attribute = $this->attribute;
+        $lastUpdateManhua = Manhua::select('manhua_id','name','cover')->where('status',1)->orderBy('last_update_time','desc')->get()->take(6)->toArray();
+        $hotManhua = Manhua::select('manhua_id','name','cover','last_update_time')->where('status',1)->orderBy('views','desc')->get()->take(6)->toArray();
+        return view('frontend.mobile.index',compact('lastUpdateManhua','hotManhua','attribute'))->with('user', session('user'))->with('vip', session('vip'));
     }
 
     //pc分类列表
@@ -81,6 +85,7 @@ class IndexController extends FrontendController
     //pc漫画信息
     public function manhuaview(Request $request,$manhua_id){
         $categories = $this->categories;
+        $attribute = $this->attribute;
         $manhua = Manhua::select('manhua.*', 'category.c_name')
             ->leftJoin('category',function ($join){
                 $join->on('category.cid','=','manhua.cid');
@@ -89,15 +94,29 @@ class IndexController extends FrontendController
             return redirect('/');
         }
         $chapterList = ManhuaChapter::select('manhua_id','chapter_id','chapter_name','chapter_cover','vip','coin','created_at')->where('manhua_id',$manhua_id)->where('status',1)->orderBy('priority','asc')->get()->toArray();
-
         Manhua::where('manhua_id',$manhua_id)->increment('views',1);
-        $attribute = $this->attribute;
+
         return view('frontend.pc.manhuaview',compact('manhua','chapterList','attribute','categories'))->with('user', session('user'))->with('vip', session('vip'));
     }
 
     //wap漫画信息
-    public function wapmanhuaview(Request $request,$manhua_id){
-        return view('frontend.mobile.manhuaview')->with('user', session('user'))->with('vip', session('vip'));
+    public function wapmanhuaview(Request $request,$manhua_id,$order){
+        $attribute = $this->attribute;
+        $manhua = Manhua::select('manhua.*', 'category.c_name')
+            ->leftJoin('category',function ($join){
+                $join->on('category.cid','=','manhua.cid');
+            })->where('manhua_id',$manhua_id)->where('manhua.status',1)->get()->toArray();
+        if(empty($manhua)){
+            return redirect('/m/');
+        }
+
+        if($order == 'asc' or $order == 'desc'){
+            $chapterList = ManhuaChapter::select('manhua_id','chapter_id','chapter_name','chapter_cover','vip','coin','created_at')->where('manhua_id',$manhua_id)->where('status',1)->orderBy('priority',$order)->get()->toArray();
+        }else{
+            $chapterList = ManhuaChapter::select('manhua_id','chapter_id','chapter_name','chapter_cover','vip','coin','created_at')->where('manhua_id',$manhua_id)->where('status',1)->orderBy('priority','asc')->get()->toArray();
+        }
+        Manhua::where('manhua_id',$manhua_id)->increment('views',1);
+        return view('frontend.mobile.manhuaview',compact('manhua','attribute','chapterList','order'))->with('user', session('user'))->with('vip', session('vip'));
     }
 
     //pc查看漫画章节
@@ -129,20 +148,36 @@ class IndexController extends FrontendController
         }else{
             return view('frontend.pc.manhuavipchapterview',compact('manhuaPhotos','manhua_id','manhuaChapter','manhua','chapterList','attribute'))->with('user', session('user'))->with('vip', session('vip'));
         }
-
-
     }
 
     //wap查看漫画章节
-    public function wapmanhuachapterview(Request $request,$chaper_id){
-        return view('frontend.mobile.manhuachapterview')->with('user', session('user'))->with('vip', session('vip'));
-    }
+    public function wapmanhuachapterview(Request $request,$manhua_id,$chaper_id){
+        $attribute = $this->attribute;
+        $manhuaPhotos = ManhuaPhotos::where('chapter_id',$chaper_id)->where('status',1)->orderBy('priority','asc')->get()->toArray();
+        if(empty($manhuaPhotos)){
+            return redirect('/m/');
+        }
+        $manhuaChapter = ManhuaChapter::select('chapter_id','chapter_name','vip','pre_chapter_id','next_chapter_id','coin')->where('chapter_id',$chaper_id)->where('status',1)->get()->toArray();
+        if(empty($manhuaChapter)){
+            return redirect('/m/');
+        }
+        $manhua = Manhua::where('manhua_id',$manhua_id)->where('status',1)->get()->toArray();
+        if(empty($manhua)){
+            return redirect('/m/');
+        }
 
-    //wap vip chapter
-    public function wapmanhuavipchapterview(Request $request,$chaper_id){
-        return view('frontend.mobile.wapmanhuavipchapterview')->with('user', session('user'))->with('vip', session('vip'));
-    }
+        $chapterList = ManhuaChapter::select('manhua_id','chapter_id','chapter_name')->where('manhua_id',$manhua_id)->where('status',1)->orderBy('priority','asc')->get()->toArray();
+        ManhuaChapter::where('chapter_id',$chaper_id)->increment('views',1);
+        Manhua::where('manhua_id',$manhua_id)->increment('views',1);
+        //检查当前用户是否有购买当前漫画章节or用户就是vip
 
+        $buyStatus = PayCoinList::where('uid',session('uid'))->where('manhua_id',$manhua_id)->where('chapter_id',$chaper_id)->get()->toArray();
+        if($manhuaChapter[0]['vip'] == 0 or $manhuaChapter[0]['coin'] == 0 or session('vip') == 1 or !empty($buyStatus)){
+            return view('frontend.mobile.manhuachapterview',compact('manhuaPhotos','manhua_id','manhuaChapter','manhua','chapterList','attribute'))->with('user', session('user'))->with('vip', session('vip'));
+        }else{
+            return view('frontend.mobile.manhuavipchapterview',compact('manhuaPhotos','manhua_id','manhuaChapter','manhua','chapterList','attribute'))->with('user', session('user'))->with('vip', session('vip'));
+        }
+    }
 
     public function vip(){
         $attribute = $this->attribute;

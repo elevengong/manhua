@@ -22,9 +22,11 @@ class UserController extends FrontendController
     //wap user center
     public function wapcenter(){
         if(!empty(session('user'))){
-            return view('frontend.mobile.usercenter')->with('user', session('user'))->with('vip', session('vip'));
+            $userInfo = Users::find(session('uid'))->toArray();
+            $attribute = $this->attribute;
+            return view('frontend.mobile.usercenter',compact('userInfo','attribute'))->with('user', session('user'))->with('vip', session('vip'));
         }else{
-            return redirect('/m/user/login');
+            return redirect('/m/login');
         }
     }
 
@@ -51,6 +53,15 @@ class UserController extends FrontendController
         if($request->isMethod('post')){
             $chapter = ManhuaChapter::where('chapter_id',$chapter_id)->where('status',1)->get()->toArray();
             if(!empty($chapter)){
+                //判断用户是否有足够的积分
+                $userInfo = Users::where('uid',session('uid'))->get()->toArray();
+                if($userInfo[0]['coin'] < $chapter[0]['coin'])
+                {
+                    $re['status'] = 0;
+                    $re['msg'] = "积分不够，请及时充值或者成为VIP";
+                    echo json_encode($re);
+                    exit;
+                }
                 $result = Users::where('uid',session('uid'))->decrement('coin',$chapter[0]['coin']);
                 $datas = array(
                     'uid' => session('uid'),
