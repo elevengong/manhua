@@ -109,15 +109,15 @@ function mod_Lock(){
 	}
 }
 
-$.ajaxSetup({
-    beforeSend: function () {
-    	$("div.main").append("<div id='ajax-loading' style='text-align:center;'><img src='"+site_url_static+"img/loading.gif' /></div>");
-    },
-    complete: function () {
-         //ajax请求完成，不管成功失败
-    	$("div.main").find("div#ajax-loading").remove();
-    },
-    error: function () {
-        //ajax请求失败
-    }
-})
+// $.ajaxSetup({
+//     beforeSend: function () {
+//     	$("div.main").append("<div id='ajax-loading' style='text-align:center;'><img src='"+site_url_static+"img/loading.gif' /></div>");
+//     },
+//     complete: function () {
+//          //ajax请求完成，不管成功失败
+//     	$("div.main").find("div#ajax-loading").remove();
+//     },
+//     error: function () {
+//         //ajax请求失败
+//     }
+// })

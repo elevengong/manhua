@@ -13,12 +13,14 @@ class FrontendController extends Controller
     protected $navigations;
     protected $attribute;
     protected $categories;
+    protected $waplistnum;
 
     public function __construct()
     {
         date_default_timezone_set('Asia/Shanghai');
         $this->attribute = Attribute::orderBy('id','asc')->get()->toArray();
         $this->categories = Category::where('status',1)->orderBy('priority','desc')->get()->toArray();
+        $this->waplistnum = 6;
 
     }
 

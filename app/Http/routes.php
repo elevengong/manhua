@@ -38,7 +38,9 @@ Route::group(['middleware' => ['web']],function () {
     Route::get('/m/manhuaview/{manhua_id}/','frontend\IndexController@wapmanhuaview')->where(['manhua_id' => '[0-9]+']);
     Route::get('/m/manhuaview/{manhua_id}/{order}','frontend\IndexController@wapmanhuaview')->where(['manhua_id' => '[0-9]+']);
     Route::get('/m/manhuachapter/{manhua_id}/{chapter_id}/','frontend\IndexController@wapmanhuachapterview')->where(['manhua_id' => '[0-9]+'])->where(['chapter_id' => '[0-9]+']);
-
+    Route::get('/m/hanman/hot/','frontend\IndexController@waphanmanhotlist');
+    Route::get('/m/hanman/{type}','frontend\IndexController@waphanmanlist')->where(['type' => '[0-9]+']);
+    Route::post('/m/hanman/next','frontend\IndexController@waphanmanlistnext');
 
     Route::get('/m/login','frontend\LoginController@waplogin');
     Route::get('/m/register','frontend\LoginController@wapregister');

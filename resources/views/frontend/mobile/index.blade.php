@@ -81,25 +81,25 @@
 
     <div class="menu">
         <div class="menu-item">
-            <a href="/caricature/ranking">
+            <a href="/m/hanman/hot/">
                 <div class="menu-icon"><img src="<?php echo asset( "/resources/views/frontend/mobile/images/icon-ranking.png") ?>"></div>
                 <div class="menu-text">韩漫排行</div>
             </a>
         </div>
         <div class="menu-item">
-            <a href="/caricature/update">
+            <a href="/m/hanman/0">
                 <div class="menu-icon"><img src="<?php echo asset( "/resources/views/frontend/mobile/images/icon-update.png") ?>"></div>
                 <div class="menu-text">连载中</div>
             </a>
         </div>
         <div class="menu-item">
-            <a href="/caricature/finish">
+            <a href="/m/hanman/1">
                 <div class="menu-icon"><img src="<?php echo asset( "/resources/views/frontend/mobile/images/icon-finish.png") ?>"></div>
                 <div class="menu-text">已完结</div>
             </a>
         </div>
         <div class="menu-item">
-            <a href="/m/manhua/1">
+            <a href="/m/hanman/2">
                 <div class="menu-icon"><img src="<?php echo asset( "/resources/views/frontend/mobile/images/icon-read.png") ?>"></div>
                 <div class="menu-text">全彩漫画</div>
             </a>
@@ -127,7 +127,7 @@
     <!-- <div class="interval"></div> -->
 
     <div class="banner-recommend">
-        <a href="/m/user/pay">
+        <a href="/m/user/deposit">
             <img src="<?php echo asset( "/resources/views/frontend/mobile/images/ad_img.png") ?>" />
         </a>
     </div>

@@ -77,6 +77,53 @@ class IndexController extends FrontendController
         return view('frontend.pc.manhualist',compact('manhuaList','attribute','categories','num'))->with('user', session('user'))->with('vip', session('vip'));
     }
 
+    //wap韩漫列表by type
+    public function waphanmanlist(Request $request,$type){
+        $attribute = $this->attribute;
+        if($type == 0){
+            $manhuaList = Manhua::where('cid',1)->where('finish',0)->orderBy('manhua_id','desc')->paginate($this->waplistnum);
+        }elseif($type == 1){
+            $manhuaList = Manhua::where('cid',1)->where('finish',1)->orderBy('manhua_id','desc')->paginate($this->waplistnum);
+        }else{
+            $manhuaList = Manhua::where('cid',1)->orderBy('manhua_id','desc')->paginate($this->waplistnum);
+        }
+        return view('frontend.mobile.manhualist',compact('attribute','manhuaList','type'))->with('user', session('user'))->with('vip', session('vip'));
+    }
+
+    //wap热门韩漫列表
+    public function waphanmanhotlist(Request $request){
+        $type = 'hot';
+        $attribute = $this->attribute;
+        $manhuaList = Manhua::where('cid',1)->orderBy('views','desc')->paginate($this->waplistnum);
+        return view('frontend.mobile.manhualist',compact('attribute','manhuaList','type'))->with('user', session('user'))->with('vip', session('vip'));
+
+    }
+
+    //wap列表页get next page
+    public function waphanmanlistnext(Request $request){
+        $attribute = $this->attribute;
+        $type = request()->input('type');
+        if($type == 'hot'){
+            $manhuaList = Manhua::select('manhua_id','finish','cover','name')->where('cid',1)->orderBy('views','desc')->paginate($this->waplistnum);
+        }elseif($type == 1){
+            $manhuaList = Manhua::select('manhua_id','finish','cover','name')->where('cid',1)->where('finish',1)->orderBy('manhua_id','desc')->paginate($this->waplistnum);
+        }elseif($type == 0){
+            $manhuaList = Manhua::select('manhua_id','finish','cover','name')->where('cid',1)->where('finish',0)->orderBy('manhua_id','desc')->paginate($this->waplistnum);
+        }else{
+            $manhuaList = Manhua::select('manhua_id','finish','cover','name')->where('cid',1)->orderBy('manhua_id','desc')->paginate($this->waplistnum);
+        }
+
+        if(empty($manhuaList)){
+            $reData['status'] = 0;
+        }else{
+            $manhuaArray = $manhuaList->toArray();
+            $reData['status'] = 1;
+            $reData['list'] = $manhuaArray['data'];
+            $reData['url'] = $attribute[1]['value'];
+        }
+        echo json_encode($reData);
+    }
+
     //wap分类列表
     public function wapmanhualist(Request $request,$cid){
         return view('frontend.mobile.manhualist')->with('user', session('user'))->with('vip', session('vip'));

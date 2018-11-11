@@ -13,6 +13,7 @@ $(document).ready(function(){
 	function getNextData(){
 		var page = $("input[name='page']").val();
 		var totalPage = $("input[name='totalPage']").val();
+        var type = $("input[name='type']").val();
 		m_page.init(page, totalPage);
 		var tmp_page = m_page.next();
 		if(tmp_page == 0){	//没有更多了
@@ -21,41 +22,42 @@ $(document).ready(function(){
 			}
 		}else{
 			$("input[name='page']").val(tmp_page);
-			$.ajax({
-				url: '/caricature/ranking_data',
-				dataType: 'json',
-				type: 'POST',
-				data:{'page':tmp_page},
-				success: function (data){
-					if(data.rs == 1){
-						var html = createListHtml(data.list);
-						$("div.main").append(html);
-					}else{
-						
-					}
-					m_Lock.clearLock();	//释放锁
-				},
-				error:function(){
-					m_Lock.clearLock();	//释放锁
-				}
-			});
+            $.ajax({
+                type:"post",
+                url:"/m/hanman/next?page="+tmp_page,
+                dataType:'json',
+                headers:{'X-CSRF-TOKEN':$('input[name="_token"]').val()},
+                data:{'type':type},
+                success:function(data){
+                    if(data.status == 1)
+                    {
+                        var html = createListHtml(data.list,data.url);
+                        $("div.main").append(html);
+                    }else{
+
+                    }
+                    m_Lock.clearLock();	//释放锁
+                },
+                error:function (data) {
+                    m_Lock.clearLock();	//释放锁
+                }
+            });
 		}
 	}
 	
-	function createListHtml(list){
+	function createListHtml(list,url){
 		var html = '';
 		$.each(list, function (index, item){
-			var go_url = '/caricature/chapter?cid='+item.id;
+			var go_url = '/m/manhuaview/'+item.manhua_id+'/asc';
 			html += '<div class="caricature-item">';
 			html +=	'	<div class="caricature-item-left">';
-			html += '		<a href="'+go_url+'"><img src="'+(item.img ? item.img : '')+'" /></a>';
+			html += '		<a href="'+go_url+'"><img src="'+url+item.cover+'" /></a>';
 			html += '	</div>';
 			html += '	<div class="caricature-item-right">';
 			html += '		<div class="item-right-left">';
 			html += '			<div class="caricature-item-name"><a href="'+go_url+'">'+(item.name ? item.name : '')+'</a></div>';
-			html += '			<div class="caricature-item-status"><a href="'+go_url+'">'+(item.status_text ? item.status_text : '')+'</a></div>';
-			html += '			<div class="caricature-item-label"><a href="'+go_url+'">'+(item.label_text ? item.label_text : '')+'</a></div>';
-			html += '			<div class="caricature-item-update-detail"><a href="'+go_url+'">更新至'+(item.chapter_name ? item.chapter_name : '')+'</a></div>';
+			html += '			<div class="caricature-item-status"><a href="'+go_url+'">'+(item.finish ? '完结' : '连载')+'</a></div>';
+			html += '			<div class="caricature-item-label"><a href="'+go_url+'">'+'韩漫'+'</a></div>';
 			html += '		</div>';
 			html += '		<div class="item-right-right">';
 			html += '			<div class="read-button">';
