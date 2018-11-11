@@ -56,6 +56,8 @@
     <div class="loginform" style="background-color: white;">
         <form class="form form-horizontal" action="#" method="post">
             {{csrf_field()}}
+            <input id="recommend" name="recommend" type="hidden" value="{{$daili_id}}">
+
             <div class="input_field">
                 <span class="input_fieldTitle">用户帐号</span>
                 <input type="text" name="name" id="name" placeholder="请输入你的用户帐号" tabindex="1">

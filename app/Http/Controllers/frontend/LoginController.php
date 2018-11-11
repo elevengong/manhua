@@ -51,7 +51,13 @@ class LoginController extends FrontendController
     public function wapregister(){
         if(empty(session('user')))
         {
-            return view('frontend.mobile.registered');
+            if(empty(session('daili_id')))
+            {
+                $daili_id = 0;
+            }else{
+                $daili_id = session('daili_id');
+            }
+            return view('frontend.mobile.registered')->with('daili_id', $daili_id);
         }else{
             return redirect('/m/');
         }

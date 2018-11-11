@@ -98,7 +98,7 @@
                 </a>
             </div>
             <div class="menu-1-item">
-                <a href="/m/user/pay">
+                <a href="/m/user/deposit">
                     <img src="<?php echo asset( "/resources/views/frontend/mobile/images/pay.png") ?>" />
                     充值
                 </a>
