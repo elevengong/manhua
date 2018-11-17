@@ -33,7 +33,7 @@ class IndexController extends FrontendController
     public function search(Request $request,$search){
         $attribute = $this->attribute;
         $categories = $this->categories;
-        $manhuaList = Manhua::where('name','like','%'.$search.'%')->orderBy('views','desc')->paginate(30);
+        $manhuaList = Manhua::where('name','like','%'.$search.'%')->where('status',1)->orderBy('views','desc')->paginate(30);
         return view('frontend.pc.search',compact('manhuaList','attribute','categories','search'))->with('user', session('user'))->with('vip', session('vip'));
 
     }
@@ -64,7 +64,7 @@ class IndexController extends FrontendController
         }else{
             $num = 3;
         }
-        $manhuaList = Manhua::where('cid',1)->where('finish',$finish)->orderBy('manhua_id','desc')->paginate(30);
+        $manhuaList = Manhua::where('cid',1)->where('finish',$finish)->where('status',1)->orderBy('manhua_id','desc')->paginate(30);
         return view('frontend.pc.manhualist',compact('manhuaList','attribute','categories','num'))->with('user', session('user'))->with('vip', session('vip'));
     }
 
@@ -73,7 +73,7 @@ class IndexController extends FrontendController
         $attribute = $this->attribute;
         $categories = $this->categories;
         $num = 4;
-        $manhuaList = Manhua::where('cid',1)->orderBy('views','desc')->paginate(30);
+        $manhuaList = Manhua::where('cid',1)->where('status',1)->orderBy('views','desc')->paginate(30);
         return view('frontend.pc.manhualist',compact('manhuaList','attribute','categories','num'))->with('user', session('user'))->with('vip', session('vip'));
     }
 
@@ -81,11 +81,11 @@ class IndexController extends FrontendController
     public function waphanmanlist(Request $request,$type){
         $attribute = $this->attribute;
         if($type == 0){
-            $manhuaList = Manhua::where('cid',1)->where('finish',0)->orderBy('manhua_id','desc')->paginate($this->waplistnum);
+            $manhuaList = Manhua::where('cid',1)->where('status',1)->where('finish',0)->orderBy('manhua_id','desc')->paginate($this->waplistnum);
         }elseif($type == 1){
-            $manhuaList = Manhua::where('cid',1)->where('finish',1)->orderBy('manhua_id','desc')->paginate($this->waplistnum);
+            $manhuaList = Manhua::where('cid',1)->where('status',1)->where('finish',1)->orderBy('manhua_id','desc')->paginate($this->waplistnum);
         }else{
-            $manhuaList = Manhua::where('cid',1)->orderBy('manhua_id','desc')->paginate($this->waplistnum);
+            $manhuaList = Manhua::where('cid',1)->where('status',1)->orderBy('manhua_id','desc')->paginate($this->waplistnum);
         }
         return view('frontend.mobile.manhualist',compact('attribute','manhuaList','type'))->with('user', session('user'))->with('vip', session('vip'));
     }
@@ -94,7 +94,7 @@ class IndexController extends FrontendController
     public function waphanmanhotlist(Request $request){
         $type = 'hot';
         $attribute = $this->attribute;
-        $manhuaList = Manhua::where('cid',1)->orderBy('views','desc')->paginate($this->waplistnum);
+        $manhuaList = Manhua::where('cid',1)->where('status',1)->orderBy('views','desc')->paginate($this->waplistnum);
         return view('frontend.mobile.manhualist',compact('attribute','manhuaList','type'))->with('user', session('user'))->with('vip', session('vip'));
 
     }
@@ -104,13 +104,13 @@ class IndexController extends FrontendController
         $attribute = $this->attribute;
         $type = request()->input('type');
         if($type == 'hot'){
-            $manhuaList = Manhua::select('manhua_id','finish','cover','name')->where('cid',1)->orderBy('views','desc')->paginate($this->waplistnum);
+            $manhuaList = Manhua::select('manhua_id','finish','cover','name')->where('cid',1)->where('status',1)->orderBy('views','desc')->paginate($this->waplistnum);
         }elseif($type == 1){
-            $manhuaList = Manhua::select('manhua_id','finish','cover','name')->where('cid',1)->where('finish',1)->orderBy('manhua_id','desc')->paginate($this->waplistnum);
+            $manhuaList = Manhua::select('manhua_id','finish','cover','name')->where('cid',1)->where('status',1)->where('finish',1)->orderBy('manhua_id','desc')->paginate($this->waplistnum);
         }elseif($type == 0){
-            $manhuaList = Manhua::select('manhua_id','finish','cover','name')->where('cid',1)->where('finish',0)->orderBy('manhua_id','desc')->paginate($this->waplistnum);
+            $manhuaList = Manhua::select('manhua_id','finish','cover','name')->where('cid',1)->where('status',1)->where('finish',0)->orderBy('manhua_id','desc')->paginate($this->waplistnum);
         }else{
-            $manhuaList = Manhua::select('manhua_id','finish','cover','name')->where('cid',1)->orderBy('manhua_id','desc')->paginate($this->waplistnum);
+            $manhuaList = Manhua::select('manhua_id','finish','cover','name')->where('cid',1)->where('status',1)->orderBy('manhua_id','desc')->paginate($this->waplistnum);
         }
 
         if(empty($manhuaList)){
