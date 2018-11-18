@@ -109,7 +109,12 @@
     <a href="/m/manhuachapter/{{$chapter['manhua_id']}}/{{$chapter['chapter_id']}}">
         <div class="chapter-item">
             <div class="chapter-item-icon">
-                <img data-original="{{$attribute[1]['value'].$chapter['chapter_cover']}}" class="lazy" />
+                @if(!empty($chapter['chapter_cover']))
+                    <img src="{{$attribute[1]['value'].$chapter['chapter_cover']}}"/>
+                @else
+                    <img src="<?php echo asset( "/resources/views/frontend/pc/images/nopicture.jpg") ?>">
+                @endif
+
             </div>
             <div class="chapter-item-detail">
                 <div class="chapter-item-name">第{{$chapter['chapter_name']}}话@if($chapter['coin'] ==0)<span class="free">免费</span>@endif</div>

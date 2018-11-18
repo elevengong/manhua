@@ -83,7 +83,7 @@
     <!-- 顶部分割线 -->
     <div class="interval" style="position: fixed; width:750px;"></div>
     <!-- 内容 -->
-    <div class="content-main">
+    <div class="content-main" style="font-size:0;">
         @foreach($manhuaPhotos as $photo)
         <img data-original="{{$attribute[1]['value']}}/public/manhua{{$photo['photo']}}" class="lazy" src="<?php echo asset( "/resources/views/frontend/mobile/images/load.gif") ?>">
         @endforeach

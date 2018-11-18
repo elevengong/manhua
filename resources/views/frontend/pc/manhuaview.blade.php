@@ -42,7 +42,7 @@
                         <img src="<?php echo asset( "/resources/views/frontend/pc/images/nopicture.jpg") ?>">
                         @endif
                     </a>
-                    
+
                     <div class="chaptername">
 
                         <div class="chapternameview">第{{$chapter['chapter_name']}}话</div>
