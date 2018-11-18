@@ -18,7 +18,7 @@ $(document).ready(function(){
 		var tmp_page = m_page.next();
 		if(tmp_page == 0){	//没有更多了
 			if($("div[mark='bottom']").length == 0){
-				$("div.main").append("<div mark='bottom' style='text-align:center;'>没有更多内容</div>");
+				$("div.main").append("<div mark='bottom' style='text-align:center;clear: both;height: 44px;font-size: 26px;'>没有更多内容</div>");
 			}
 		}else{
 			$("input[name='page']").val(tmp_page);
