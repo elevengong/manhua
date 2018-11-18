@@ -131,7 +131,7 @@
 
 
     </div>
-    <div class="r_img ">
+    <div class="r_img" style="height: 2000px;overflow: hidden;">
         <img src="{{$attribute[1]['value']}}/public/manhua/{{$manhuaPhotos[0]['photo']}}" alt="{{$manhua[0]['name']}} 第{{$manhuaChapter[0]['chapter_name']}}话">
         <img src="{{$attribute[1]['value']}}/public/manhua/{{$manhuaPhotos[1]['photo']}}" alt="{{$manhua[0]['name']}} 第{{$manhuaChapter[0]['chapter_name']}}话">
     </div>

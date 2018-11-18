@@ -34,7 +34,11 @@
             @foreach($chapterList as $chapter)
             <div class="chapterlist">
                 <div class="chaptercss">
-                    <a href="/manhuachapter/{{$chapter['manhua_id']}}/{{$chapter['chapter_id']}}" target="_blank"><img src="{{$attribute[1]['value'].$chapter['chapter_cover']}}"></a>
+                    @if(!empty($chapter['chapter_cover']))
+                    <a href="/manhuachapter/{{$chapter['manhua_id']}}/{{$chapter['chapter_id']}}" target="_blank">
+                        <img src="{{$attribute[1]['value'].$chapter['chapter_cover']}}">
+                    </a>
+                    @endif
 
                     <div class="chaptername">
 
