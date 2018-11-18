@@ -67,7 +67,7 @@
                     很抱歉，您的还没有登陆，无法继续查看<br>请登陆后继续阅读
                 </div>
                 <div class="button">
-                    <a href="/m/login">登陆</a> <a href="/m/registered">注册</a>
+                    <a href="/m/login">登陆</a> <a href="/m/register">注册</a>
                 </div>
             </div>
             @endif
