@@ -64,7 +64,7 @@
     @foreach($manhuaList as $manhua)
     <div class="caricature-item">
         <div class="caricature-item-left">
-            <a href="/m/manhuaview/{{$manhua['manhua_id']}}/asc"><img data-original="{{$attribute[1]['value'].$manhua['cover']}}" class="lazy" src="<?php echo asset( "/resources/views/frontend/mobile/images/load.gif") ?>"/></a>
+            <a href="/m/manhuaview/{{$manhua['manhua_id']}}/asc"><img data-original="{{$attribute[1]['value'].$manhua['cover']}}" class="lazy" src="<?php echo asset( "/resources/views/frontend/mobile/images/timg.gif") ?>"/></a>
         </div>
         <div class="caricature-item-right">
             <div class="item-right-left">
