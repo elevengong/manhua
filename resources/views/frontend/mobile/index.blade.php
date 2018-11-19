@@ -51,27 +51,27 @@
         <figure id="full_feature" class="swipslider">
             <ul class="sw-slides">
                 <li class="sw-slide">
-                    <a href="/manhuaview/269">
+                    <a href="/m/manhuaview/269">
                         <img src="<?php echo asset( "/resources/views/frontend/mobile/images/recommend_001.jpg") ?>" alt="">
                     </a>
                 </li>
                 <li class="sw-slide">
-                    <a href="/manhuaview/262">
+                    <a href="/m/manhuaview/262">
                         <img src="<?php echo asset( "/resources/views/frontend/mobile/images/recommend_002.jpg") ?>" alt="">
                     </a>
                 </li>
                 <li class="sw-slide">
-                    <a href="/manhuaview/256">
+                    <a href="/m/manhuaview/256">
                         <img src="<?php echo asset( "/resources/views/frontend/mobile/images/recommend_003.jpg") ?>" alt="">
                     </a>
                 </li>
                 <li class="sw-slide">
-                    <a href="/manhuaview/53">
+                    <a href="/m/manhuaview/53">
                         <img src="<?php echo asset( "/resources/views/frontend/mobile/images/recommend_004.jpg") ?>" alt="">
                     </a>
                 </li>
                 <li class="sw-slide">
-                    <a href="/manhuaview/38">
+                    <a href="/m/manhuaview/38">
                         <img src="<?php echo asset( "/resources/views/frontend/mobile/images/recommend_005.jpg") ?>" alt="">
                     </a>
                 </li>
