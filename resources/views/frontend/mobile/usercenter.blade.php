@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8">
-
+    <link href="<?php echo asset( "/resources/views/frontend/pc/images/favicon.ico") ?>" rel="shortcut icon" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
     <title>个人中心</title>
     <script>
@@ -46,6 +46,11 @@
                 <img src="<?php echo asset( "/resources/views/frontend/mobile/images/home.png") ?>" />
             </a>
         </div>
+        <div class="icon-search">
+            <a href="/m/search">
+                <img src="<?php echo asset( "/resources/views/frontend/mobile/images/search_ico.png") ?>" />
+            </a>
+        </div>
     </div>
     <!-- </div> -->
     <div class="head-uname">
@@ -78,7 +83,7 @@
     </a>
     <div class="interval"></div>
     @if($vip==1)
-    <a href="#">
+    <a href="/m/user/deposit">
         <div class="item-line border-bottom">
             <div class="item-line-icon">
                 <img src="<?php echo asset( "/resources/views/frontend/mobile/images/browse-record.png") ?>" />
@@ -91,18 +96,21 @@
         </div>
     </a>
     @endif
-    {{--<a href="/user/set_pwd">--}}
-        {{--<div class="item-line border-bottom">--}}
-            {{--<div class="item-line-icon">--}}
-                {{--<img src="http://img.18manhua.com/static/img/user/center/set-uname-password.png" />--}}
-            {{--</div>--}}
-            {{--<div class="item-line-title">修改账号密码</div>--}}
-            {{--<div class="item-line-explain"></div>--}}
-            {{--<div class="item-line-direction">--}}
-                {{--<img src="" />--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</a>--}}
+    @if(isset($attribute[5]['value']))
+        <a href="javascript:" onclick="javascript:window.location.href='weixin://'">
+            <div class="item-line border-bottom">
+                <div class="item-line-icon">
+                    <img src="<?php echo asset( "/resources/views/frontend/mobile/images/weixin.png") ?>" />
+                </div>
+                <div class="item-line-title">联系微信</div>
+                <div class="item-line-explain">{{$attribute[5]['value']}}</div>
+                <div class="item-line-direction">
+                    <img src="<?php echo asset( "/resources/views/frontend/mobile/images/next1.png") ?>" />
+                </div>
+            </div>
+        </a>
+    @endif
+
     <div class="interval"></div>
     <a href="/user/logout">
         <div class="item-line border-bottom">

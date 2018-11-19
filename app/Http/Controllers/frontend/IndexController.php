@@ -35,7 +35,17 @@ class IndexController extends FrontendController
         $categories = $this->categories;
         $manhuaList = Manhua::where('name','like','%'.$search.'%')->where('status',1)->orderBy('views','desc')->paginate(30);
         return view('frontend.pc.search',compact('manhuaList','attribute','categories','search'))->with('user', session('user'))->with('vip', session('vip'));
+    }
 
+    //wap search
+    public function wapsearchpage(Request $request){
+        return view('frontend.mobile.search');
+    }
+
+    public function wapsearch(Request $request,$search){
+        $attribute = $this->attribute;
+        $manhuaList = Manhua::where('name','like','%'.$search.'%')->where('status',1)->orderBy('views','desc')->get()->toArray();
+        return view('frontend.mobile.search',compact('attribute','manhuaList'));
     }
 
     //wap首页

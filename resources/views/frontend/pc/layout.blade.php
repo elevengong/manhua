@@ -8,9 +8,9 @@
 
     <meta name="keywords" content="18韩漫">
     <meta name="description" content="18韩漫">
-    <meta http-equiv="mobile-agent" content="format=xhtml; url=http://m.gumua.com/" />
-    <meta http-equiv="mobile-agent" content="format=html5; url=http://m.gumua.com/" />
-    <link rel="alternate" media="only screen and (max-width: 640px)" href="http://m.gumua.com/" />
+    <meta http-equiv="mobile-agent" content="format=xhtml; url=http://www.18hanman.com/m/" />
+    <meta http-equiv="mobile-agent" content="format=html5; url=http://www.18hanman.com/m" />
+    <link rel="alternate" media="only screen and (max-width: 640px)" href="http://www.18hanman.com/m" />
 
     <link href="<?php echo asset( "/resources/views/frontend/pc/images/favicon.ico") ?>" rel="shortcut icon" />
     <link rel="stylesheet" href="<?php echo asset( "/resources/views/frontend/pc/css/swiper-3.4.2.min.css") ?>">
@@ -32,8 +32,8 @@
         <a class="m_logo" href="/"><img src="<?php echo asset( "/resources/views/frontend/pc/images/logo.png") ?>"></a>
         <div class="m_search">
             <div class="m_search_i">
-                <input type="text" id="txt_seach" placeholder="一拳超人" />
-                <a class="m_search_se" href="javascript:;" onclick="seach()">
+                <input type="text" id="txt_seach" placeholder="性癖好" />
+                <a class="m_search_se" href="javascript:;" onclick="seach();">
                     <img src="<?php echo asset( "/resources/views/frontend/pc/images/search.png") ?>">
                 </a>
             </div>
@@ -78,7 +78,7 @@
     function seach() {
         var seach = document.getElementById("txt_seach").value;
         if (seach == "") {
-            seach = "一拳超人";
+            seach = "性癖好";
         }
         window.location.href = "/search/" + seach;
     }
@@ -101,10 +101,15 @@
 <div class="m_foots">
     <div class="m1100 m_foot">
         <div class="m_foot_link">
-            <a href="tencent://message/?uin={{$attribute[2]['value']}}">联系QQ:{{$attribute[2]['value']}}</a>
+            @if(isset($attribute[2]['value']))
+            <a href="tencent://message/?uin={{$attribute[2]['value']}}">QQ:{{$attribute[2]['value']}}</a><br>
+            @endif
+            @if(isset($attribute[5]['value']))
+            <a href="javascript:">微信:{{$attribute[5]['value']}}</a><br>
+            @endif
         </div>
         <div class="m_foot_copy">
-            CopyRight © 2013年-2018年 gumua.com 18韩漫 All Rights Reserved
+            CopyRight © 2016年-2019年 18hanhua.com 18韩漫 All Rights Reserved
         </div>
     </div>
 </div>

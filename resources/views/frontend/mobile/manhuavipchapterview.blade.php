@@ -2,7 +2,7 @@
 <html lang="zh-CN" style="height:300%;">
 <head>
     <meta charset="utf-8">
-
+    <link href="<?php echo asset( "/resources/views/frontend/pc/images/favicon.ico") ?>" rel="shortcut icon" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
     <title>{{$manhua[0]['name']}}-第{{$manhuaChapter[0]['chapter_name']}}话</title>
     <script>

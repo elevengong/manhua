@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+    <link href="<?php echo asset( "/resources/views/frontend/pc/images/favicon.ico") ?>" rel="shortcut icon" />
     <title>{{$manhua[0]['name']}}-第{{$manhuaChapter[0]['chapter_name']}}话</title>
     <script>
         var deviceWidth = parseInt(window.screen.width);  //获取当前设备的屏幕宽度

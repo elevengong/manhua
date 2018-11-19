@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link href="<?php echo asset( "/resources/views/frontend/pc/images/favicon.ico") ?>" rel="shortcut icon" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
-    <title>排行</title>
+    <title>搜索</title>
     <script>
         var deviceWidth = parseInt(window.screen.width);  //获取当前设备的屏幕宽度
         var deviceScale = deviceWidth / 750;  //得到当前设备屏幕与720之间的比例，之后我们就可以将网页宽度固定为720px
@@ -26,9 +26,7 @@
 
     <link rel="stylesheet" type="text/css" href="<?php echo asset( "/resources/views/frontend/mobile/css/comm.css") ?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo asset( "/resources/views/frontend/mobile/css/list.css") ?>" />
-    <script src="<?php echo asset( "/resources/views/frontend/js/comm.js") ?>"></script>
-    <script src="<?php echo asset( "/resources/views/frontend/js/ranking.js") ?>"></script>
-    <script src="<?php echo asset( "/resources/views/frontend/js/jquery.lazyload.min.js") ?>"></script>
+    <link rel="stylesheet" type="text/css" href="<?php echo asset( "/resources/views/frontend/mobile/css/search.css") ?>" />
 </head>
 <body style="margin: 0px;">
 <div class="main">
@@ -41,7 +39,7 @@
             </a>
         </div>
         <div class="title">
-            排行
+            搜索
         </div>
         <div class="go-home">
             <a href="/m">
@@ -60,38 +58,48 @@
         </div>
     </div>
     <!-- </div> -->
-    <div style="height:15px;width:100%;background-color:#FFF;"></div>
-    @foreach($manhuaList as $manhua)
-    <div class="caricature-item">
-        <div class="caricature-item-left">
-            <a href="/m/manhuaview/{{$manhua['manhua_id']}}/asc"><img data-original="{{$attribute[1]['value'].$manhua['cover']}}" class="lazy" src="<?php echo asset( "/resources/views/frontend/mobile/images/load.gif") ?>"/></a>
+    <div style="height:15px;width:100%;background-color:#FFF;">
+        <div class="serCh" id="serCh">
+            <form id="searchForm" action="">
+                {{csrf_field()}}
+                <div class="serChinputBox"><input type="search" class="searInput" placeholder="漫画名" autosave="" id="searInput"></div>
+                <div class="ser_ico"><a href="javascript:void(0);" onclick="serchAction();" class="searBtn"></a></div>
+
+            </form>
         </div>
-        <div class="caricature-item-right">
-            <div class="item-right-left">
-                <div class="caricature-item-name"><a href="/m/manhuaview/{{$manhua['manhua_id']}}/asc">{{$manhua['name']}}</a></div>
-                <div class="caricature-item-status">@if($manhua['finish'] == 0)连载中@else完结@endif</div>
-                <div class="caricature-item-label">韩漫</div>
+    </div>
+    @if(isset($manhuaList))
+    @foreach($manhuaList as $manhua)
+        <div class="caricature-item">
+            <div class="caricature-item-left">
+                <a href="/m/manhuaview/{{$manhua['manhua_id']}}/asc"><img src="{{$attribute[1]['value'].$manhua['cover']}}" /></a>
             </div>
-            <div class="item-right-right">
-                <div class="read-button">
-                    <a href="/m/manhuaview/{{$manhua['manhua_id']}}/asc">开始阅读</a>
+            <div class="caricature-item-right">
+                <div class="item-right-left">
+                    <div class="caricature-item-name"><a href="/m/manhuaview/{{$manhua['manhua_id']}}/asc">{{$manhua['name']}}</a></div>
+                    <div class="caricature-item-status">@if($manhua['finish'] == 0)连载中@else完结@endif</div>
+                    <div class="caricature-item-label">韩漫</div>
+                </div>
+                <div class="item-right-right">
+                    <div class="read-button">
+                        <a href="/m/manhuaview/{{$manhua['manhua_id']}}/asc">开始阅读</a>
+                    </div>
                 </div>
             </div>
+            <div style="clear:both;"></div>
         </div>
-        <div style="clear:both;"></div>
-    </div>
     @endforeach
-
+    @endif
 </div>
-<div id="loadding" style="display: none;">正在加载中...</div>
-{{csrf_field()}}
-<input type="hidden" name="page" value="1" />
-<input type="hidden" name="type" value="{{$type}}" />
-<input type="hidden" name="totalPage" value="{{$manhuaList->lastPage()}}" />
 <script>
-    $(function() {
-        $("img.lazy").lazyload({effect: "fadeIn"});
-    });
+    function serchAction() {
+        var seach = document.getElementById("searInput").value;
+        if (seach == "") {
+            seach = "性癖好";
+        }
+        window.location.href = "/m/search/" + seach;
+    }
 </script>
+
 </body>
 </html>

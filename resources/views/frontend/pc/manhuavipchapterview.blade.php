@@ -12,7 +12,7 @@
     {{--<link rel="alternate" media="only screen and (max-width: 640px)" href="http://m.gumua.com/manhua/535.html" />--}}
     <meta property="og:type" content="article" />
     <meta property="og:image" content="{{$attribute[1]['value'].$manhua[0]['cover']}}" />
-    <meta property="og:release_date" content="2017/1/3" />
+    <meta property="og:release_date" content="2018/11/3" />
     <meta property="og:title" content="{{$manhua[0]['name']}}">
     <meta property="og:description" content="{{$manhua[0]['intro']}}" />
 
@@ -87,8 +87,8 @@
         <a class="m_logo" href="/"><img src="<?php echo asset( "/resources/views/frontend/pc/images/logo.png") ?>"></a>
         <div class="m_search">
             <div class="m_search_i">
-                <input type="text" id="txt_seach" placeholder="一拳超人" />
-                <a class="m_search_se" href="javascript:;" onclick="seach()">
+                <input type="text" id="txt_seach" placeholder="性癖好" />
+                <a class="m_search_se" href="javascript:;" onclick="seach();">
                     <img src="<?php echo asset( "/resources/views/frontend/pc/images/search.png") ?>">
                 </a>
             </div>
@@ -215,8 +215,8 @@
     function seach() {
         var seach = document.getElementById("txt_seach").value;
         if (seach == "") {
-            seach = "一拳超人";
+            seach = "性癖好";
         }
-        window.location.href = "http://www.gumua.com/Seach/1/?ckey=" + seach;
+        window.location.href = "/search/" + seach;
     }
 </script>

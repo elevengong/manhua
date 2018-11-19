@@ -41,7 +41,8 @@ Route::group(['middleware' => ['web']],function () {
     Route::get('/m/hanman/hot/','frontend\IndexController@waphanmanhotlist');
     Route::get('/m/hanman/{type}','frontend\IndexController@waphanmanlist')->where(['type' => '[0-9]+']);
     Route::post('/m/hanman/next','frontend\IndexController@waphanmanlistnext');
-
+    Route::any('/m/search/','frontend\IndexController@wapsearchpage');
+    Route::any('/m/search/{search}','frontend\IndexController@wapsearch');
     Route::get('/m/login','frontend\LoginController@waplogin');
     Route::get('/m/register','frontend\LoginController@wapregister');
 

@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8">
-
+    <link href="<?php echo asset( "/resources/views/frontend/pc/images/favicon.ico") ?>" rel="shortcut icon" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
     <title>18韩漫</title>
     <script>
@@ -27,8 +27,9 @@
     <script src="<?php echo asset( "/resources/views/frontend/js/swipeslider.min.js") ?>"></script>
 
     <link rel="stylesheet" type="text/css" href="<?php echo asset( "/resources/views/frontend/mobile/css/comm.css") ?>" />
-    <link rel="stylesheet" type="text/css" href="<?php echo asset( "/resources/views/frontend/mobile/css/index.css") ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo asset( "/resources/views/frontend/mobile/css/index.css?ver=1.0") ?>" />
     <script src="<?php echo asset( "/resources/views/frontend/js/index.js") ?>"></script>
+    <script src="<?php echo asset( "/resources/views/frontend/js/jquery.lazyload.min.js") ?>"></script>
 </head>
 <body style="margin: 0px;">
 <div class="main">
@@ -38,6 +39,11 @@
         <div class="icon-user-center">
             <a href="/m/user/center">
                 <img src="<?php echo asset( "/resources/views/frontend/mobile/images/icon_user_center.png") ?>" />
+            </a>
+        </div>
+        <div class="icon-search">
+            <a href="/m/search">
+                <img src="<?php echo asset( "/resources/views/frontend/mobile/images/search_ico.png") ?>" />
             </a>
         </div>
     </div>
@@ -115,7 +121,7 @@
         @foreach($lastUpdateManhua as $manhua)
         <a href="/m/manhuaview/{{$manhua['manhua_id']}}/asc">
             <div class="recommend-item">
-                <div class="item-img"><img src="{{$attribute[1]['value'].$manhua['cover']}}" /></div>
+                <div class="item-img"><img data-original="{{$attribute[1]['value'].$manhua['cover']}}" class="lazy" src="<?php echo asset( "/resources/views/frontend/mobile/images/timg.gif") ?>"/></div>
                 <div class="item-name">{{$manhua['name']}}</div>
                 <div class="item-short-explain"></div>
             </div>
@@ -151,5 +157,10 @@
         @endforeach
     </div>
 </div>
+<script>
+    $(function() {
+        $("img.lazy").lazyload({effect: "fadeIn"});
+    });
+</script>
 </body>
 </html>

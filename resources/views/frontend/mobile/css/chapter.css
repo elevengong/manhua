@@ -182,3 +182,9 @@
 .chapter-item .chapter-item-gold img{
 	vertical-align: middle;
 }
+
+.main-title .icon-search-view{
+	width: 44px;
+	right: 147px;
+	position: absolute;
+}

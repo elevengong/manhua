@@ -11,6 +11,7 @@ $(document).ready(function(){
 	});
 	
 	function getNextData(){
+		$("#loadding").css('display','block');
 		var page = $("input[name='page']").val();
 		var totalPage = $("input[name='totalPage']").val();
         var type = $("input[name='type']").val();
@@ -18,6 +19,7 @@ $(document).ready(function(){
 		var tmp_page = m_page.next();
 		if(tmp_page == 0){	//没有更多了
 			if($("div[mark='bottom']").length == 0){
+                $("#loadding").css('display','none');
 				$("div.main").append("<div mark='bottom' style='text-align:center;clear: both;height: 44px;font-size: 26px;'>没有更多内容</div>");
 			}
 		}else{
@@ -31,6 +33,7 @@ $(document).ready(function(){
                 success:function(data){
                     if(data.status == 1)
                     {
+                        $("#loadding").css('display','none');
                         var html = createListHtml(data.list,data.url);
                         $("div.main").append(html);
                     }else{

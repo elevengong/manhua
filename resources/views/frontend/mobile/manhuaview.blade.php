@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8">
-
+    <link href="<?php echo asset( "/resources/views/frontend/pc/images/favicon.ico") ?>" rel="shortcut icon" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
     <title>{{$manhua[0]['name']}}</title>
     <script>
@@ -52,6 +52,11 @@
         <div class="icon-user-center">
             <a href="/m/user/center">
                 <img src="<?php echo asset( "/resources/views/frontend/mobile/images/icon_user_center.png") ?>" />
+            </a>
+        </div>
+        <div class="icon-search-view">
+            <a href="/m/search">
+                <img src="<?php echo asset( "/resources/views/frontend/mobile/images/search_ico.png") ?>" />
             </a>
         </div>
     </div>

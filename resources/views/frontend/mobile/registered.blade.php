@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8">
-
+    <link href="<?php echo asset( "/resources/views/frontend/pc/images/favicon.ico") ?>" rel="shortcut icon" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
     <title>注册</title>
     <script>
@@ -47,6 +47,11 @@
         <div class="go-home">
             <a href="/m">
                 <img src="<?php echo asset( "/resources/views/frontend/mobile/images/home.png") ?>" />
+            </a>
+        </div>
+        <div class="icon-search">
+            <a href="/m/search">
+                <img src="<?php echo asset( "/resources/views/frontend/mobile/images/search_ico.png") ?>" />
             </a>
         </div>
     </div>

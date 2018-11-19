@@ -16,6 +16,12 @@
 	padding-top:20px;
 	padding-bottom:20px;
 }
+.main-title .icon-search{
+	width:44px;
+	right:82px;
+	position:absolute;
+}
+
 div.main{
 	width:750px;
 	margin: 0 auto;
@@ -56,7 +62,7 @@ a{
 }
 
 .main .main-title .go-home{
-	right:90px;
+	right:20px;
 	position:absolute;
 	width:44px;
 }
