@@ -51,33 +51,28 @@
         <figure id="full_feature" class="swipslider">
             <ul class="sw-slides">
                 <li class="sw-slide">
-                    <a href="#">
+                    <a href="/manhuaview/269">
                         <img src="<?php echo asset( "/resources/views/frontend/mobile/images/recommend_001.jpg") ?>" alt="">
                     </a>
                 </li>
                 <li class="sw-slide">
-                    <a href="#">
+                    <a href="/manhuaview/262">
                         <img src="<?php echo asset( "/resources/views/frontend/mobile/images/recommend_002.jpg") ?>" alt="">
                     </a>
                 </li>
                 <li class="sw-slide">
-                    <a href="#">
+                    <a href="/manhuaview/256">
                         <img src="<?php echo asset( "/resources/views/frontend/mobile/images/recommend_003.jpg") ?>" alt="">
                     </a>
                 </li>
                 <li class="sw-slide">
-                    <a href="#">
+                    <a href="/manhuaview/53">
                         <img src="<?php echo asset( "/resources/views/frontend/mobile/images/recommend_004.jpg") ?>" alt="">
                     </a>
                 </li>
                 <li class="sw-slide">
-                    <a href="#">
+                    <a href="/manhuaview/38">
                         <img src="<?php echo asset( "/resources/views/frontend/mobile/images/recommend_005.jpg") ?>" alt="">
-                    </a>
-                </li>
-                <li class="sw-slide">
-                    <a href="#">
-                        <img src="<?php echo asset( "/resources/views/frontend/mobile/images/recommend_006.jpg") ?>" alt="">
                     </a>
                 </li>
 

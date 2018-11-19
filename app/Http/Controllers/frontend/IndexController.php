@@ -24,7 +24,7 @@ class IndexController extends FrontendController
         $hotManhua = Manhua::select('manhua_id','name','cover','last_update_time')->where('status',1)->orderBy('views','desc')->get()->take(12)->toArray();
 
         //-----最后条件要改成完结状态
-        $completeManhua = Manhua::select('manhua_id','name','cover','last_update_time')->where('status',1)->orderBy('views','desc')->get()->take(8)->toArray();
+        $completeManhua = Manhua::select('manhua_id','intro','name','cover','last_update_time')->where('status',1)->orderBy('views','desc')->get()->take(13)->toArray();
 
         return view('frontend.pc.index',compact('lastUpdateManhua','hotManhua','completeManhua','attribute','categories'))->with('user', session('user'))->with('vip', session('vip'));
     }

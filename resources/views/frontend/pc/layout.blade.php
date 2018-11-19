@@ -15,7 +15,7 @@
     <link href="<?php echo asset( "/resources/views/frontend/pc/images/favicon.ico") ?>" rel="shortcut icon" />
     <link rel="stylesheet" href="<?php echo asset( "/resources/views/frontend/pc/css/swiper-3.4.2.min.css") ?>">
     <link href="<?php echo asset( "/resources/views/frontend/pc/css/reset.css") ?>" rel="stylesheet" />
-    <link href="<?php echo asset( "/resources/views/frontend/pc/css/manhua.css") ?>" rel="stylesheet" />
+    <link href="<?php echo asset( "/resources/views/frontend/pc/css/manhua.css?ver=1.0") ?>" rel="stylesheet" />
     <script src="<?php echo asset( "/resources/views/frontend/js/jquery-1.10.1.min.js") ?>"></script>
     <script src="<?php echo asset( "/resources/views/frontend/js/layer/layer.js") ?>"></script>
 

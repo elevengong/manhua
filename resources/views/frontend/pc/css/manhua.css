@@ -33,7 +33,7 @@
 .m_banner{height:358px; overflow: hidden;}
 .m_banner img{width:100%;height:100%;object-fit:cover;}
 .m_banner_l{width:400px;padding-right: 8px;background:#fff;height: 358px;position: relative;}
-.m_banner_l:before{content:'';width: 400px;height:  100%;background: rgba(1,1,1,.2);position:  absolute;left: 0;top: 0;}
+.m_banner_l:before{content:'';width: 400px;height:  100%;position:  absolute;left: 0;top: 0;}
 .m_banner_r a{float:left;height:175px;}
 .m_ban_rt,.m_ban_rb{overflow: hidden;background:#fff;}
 .m_ban_rt{padding-bottom: 8px;}
@@ -655,7 +655,11 @@ text-overflow: ellipsis;-webkit-box-orient: vertical;-webkit-line-clamp: 4;}
     border: 0px;
 }
 
-.m_new_ul {margin-top: 20px;}
+/*.m_new_ul {margin-top: 20px;}*/
+
+.complete_height li{
+    min-height: 245px !important;
+}
 
 #ct {
     min-height: 350px;
