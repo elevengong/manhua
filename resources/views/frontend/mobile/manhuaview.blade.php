@@ -49,7 +49,7 @@
                 <img src="<?php echo asset( "/resources/views/frontend/mobile/images/home.png") ?>" />
             </a>
         </div>
-        <div class="icon-user-center">
+        <div class="icon-user-center" style="right: 80px !important;">
             <a href="/m/user/center">
                 <img src="<?php echo asset( "/resources/views/frontend/mobile/images/icon_user_center.png") ?>" />
             </a>
