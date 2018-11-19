@@ -149,7 +149,7 @@
         @foreach($hotManhua as $manhua)
             <a href="/m/manhuaview/{{$manhua['manhua_id']}}/asc">
             <div class="recommend-item">
-                <div class="item-img"><img src="{{$attribute[1]['value'].$manhua['cover']}}" /></div>
+                <div class="item-img"><img data-original="{{$attribute[1]['value'].$manhua['cover']}}" class="lazy" src="<?php echo asset( "/resources/views/frontend/mobile/images/timg.gif") ?>"/></div>
                 <div class="item-name">{{$manhua['name']}}</div>
                 <div class="item-short-explain"></div>
             </div>
