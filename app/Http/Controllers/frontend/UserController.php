@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Model\ManhuaChapter;
+use App\Model\OrderDeposit;
 use App\Model\PayCoinList;
+use App\Model\SaleType;
 use App\Model\Users;
 use Illuminate\Http\Request;
 
@@ -35,6 +37,65 @@ class UserController extends FrontendController
         $attribute = $this->attribute;
         $categories = $this->categories;
         return view('frontend.pc.deposit',compact('attribute','categories'))->with('user', session('user'))->with('vip', session('vip'));
+    }
+
+    //user payment
+    public function payment(Request $request){
+        if($request->isMethod('post')){
+            $attribute = $this->attribute;
+            $payType = request()->input('pay_type');
+            $saleId = request()->input('id');
+            $input = array();
+
+            $saleTypeArray = SaleType::find($saleId);
+
+            if(!empty($saleTypeArray)){
+                $input['uid'] = session('uid');
+                $input['order_money'] = $saleTypeArray->money;
+                $input['order_type'] = $saleId;
+                if($payType == 'alipay'){
+                    $input['pay_type'] = 1;
+                }else{
+                    $input['pay_type'] = 2;
+                }
+                $input['ip'] = $request->getClientIp();
+                $input['order_no'] = time().rand(100,999);
+                //判断当前用户这次存款是否要给代理反佣
+                $user = Users::find(session('uid'));
+                $daili_id = $user->daili_id;
+                if($daili_id != 0){
+                    $result = OrderDeposit::where('uid',session('uid'))->where('daili_id',$daili_id)->where('status',1)->count();
+                    if($result == 0){
+                        $input['daili_id'] = $daili_id;
+                    }else{
+                        $input['daili_id'] = 0;
+                    }
+
+                }else{
+                    $input['daili_id'] = $daili_id;
+                }
+
+                $order = OrderDeposit::create($input);
+                if($order->deposit_id){
+                    return redirect($attribute[6]['value'].'?id='.$order->deposit_id.'&money='.$input['order_money'].'&order_no='.$input['order_no']);
+                }else{
+                    $re['status'] = 0;
+                    $re['msg'] = "Error3";
+                    echo json_encode($re);
+                    exit;
+                }
+
+            }else{
+                $re['status'] = 0;
+                $re['msg'] = "Error2";
+                echo json_encode($re);
+                exit;
+            }
+
+
+        }else{
+            echo "Error!"; exit;
+        }
     }
 
     //pc pay

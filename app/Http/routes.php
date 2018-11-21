@@ -61,6 +61,7 @@ Route::group(['middleware' => ['web','user.login']],function () {
     Route::any('/user/paycoin/{chapter_id}','frontend\UserController@paycoin')->where(['chapter_id' => '[0-9]+']);
     Route::get('/user/center','frontend\UserController@center');
     Route::get('/user/deposit','frontend\UserController@deposit');
+    Route::post('/user/payment','frontend\UserController@payment');
 
     //wap
     Route::get('/m/user/center','frontend\UserController@wapcenter');

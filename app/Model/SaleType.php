@@ -10,5 +10,4 @@ class SaleType extends Model
     protected $primaryKey = 't_id';
     public $timestamps = false;
 
-    protected $fillable = ['t_id','name','money'];
 }

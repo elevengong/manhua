@@ -1,7 +1,6 @@
 @extends("frontend.pc.layout")
 @section('content')
     <div class="m1100 m_content">
-
         <div class="mn" id="main_message">
             <div class="bm">
                 <div class="bm_h bbs">
@@ -13,7 +12,7 @@
                             <div class="goods-main">
                                 <div class="goods-item" data-id="1">
                                     <div class="goods-item-left">
-                                        <div class="goods-item-money">3.9元</div>
+                                        <div class="goods-item-money">6.9元</div>
                                         <div class="goods-item-name">VIP日卡</div>
                                         <div class="goods-item-explain">1天免费看</div>
                                     </div>
@@ -67,8 +66,6 @@
                                     </div>
                                 </div>
 
-
-                                <input type="hidden" name="id" value="2">
                                 <div style="clear:both;"></div>
 
                                 <div class="paymentpaytype">选择支付方式</div>
@@ -78,12 +75,16 @@
                                     <div class="wxpay" data-key="pay" data-pay="wxpay"><img src="<?php echo asset( "/resources/views/frontend/pc/images/wx_01.png") ?>"></div>
 
                                 </div>
+                                <form action="/user/payment" method="post" name="payform">
+                                    {{csrf_field()}}
+                                <input type="hidden" name="id" value="2">
                                 <input type="hidden" name="pay_type" value="alipay">
+                                </form>
                                 <div style="clear:both;"></div>
                             </div>
 
                             <div class="depositbutton">
-                                <a href="javascript:void(0);" onclick="onSubmit('/pay3/create')">充值</a>
+                                <a href="javascript:void(0);" onclick="onPay();">充值</a>
                             </div>
 
 
@@ -112,6 +113,10 @@
                 var default_pay = $("input[name='pay_type']").val();
                 $(".goods-main div[data-key='pay'][data-pay='"+default_pay+"']").click();//默认选中
             })
+
+            function onPay() {
+                document.payform.submit();
+            }
         </script>
     </div>
 @endsection
