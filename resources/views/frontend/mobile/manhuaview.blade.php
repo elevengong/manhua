@@ -115,7 +115,7 @@
         <div class="chapter-item">
             <div class="chapter-item-icon">
                 @if(!empty($chapter['chapter_cover']))
-                    <img src="{{$attribute[1]['value'].$chapter['chapter_cover']}}"/>
+                    <img class="lazy" src="<?php echo asset( "/resources/views/frontend/mobile/images/timg.gif") ?>" data-original="{{$attribute[1]['value'].$chapter['chapter_cover']}}"/>
                 @else
                     <img src="<?php echo asset( "/resources/views/frontend/pc/images/nopicture.jpg") ?>">
                 @endif
@@ -133,5 +133,10 @@
     </a>
     @endforeach
 </div>
+<script>
+    $(function() {
+        $("img.lazy").lazyload({effect: "fadeIn"});
+    });
+</script>
 </body>
 </html>

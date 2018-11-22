@@ -34,7 +34,7 @@
                  @foreach($lastUpdateManhua as $manhua)
                  <li>
                      <a href="/manhuaview/{{$manhua['manhua_id']}}">
-                         <img src="{{$attribute[1]['value'].$manhua['cover']}}">
+                         <img class="lazy" src="<?php echo asset( "/resources/views/frontend/mobile/images/timg.gif") ?>" data-original="{{$attribute[1]['value'].$manhua['cover']}}">
                          <h3>{{$manhua['name']}}</h3>
                          <p>更新于：<span>{{date('Y-m-d',strtotime($manhua['last_update_time']))}}</span></p>
                      </a>
@@ -56,7 +56,7 @@
                  @foreach($hotManhua as $manhua)
                      <li>
                          <a href="/manhuaview/{{$manhua['manhua_id']}}">
-                             <img src="{{$attribute[1]['value'].$manhua['cover']}}">
+                             <img class="lazy" src="<?php echo asset( "/resources/views/frontend/mobile/images/timg.gif") ?>" data-original="{{$attribute[1]['value'].$manhua['cover']}}">
                              <h3>{{$manhua['name']}}</h3>
                              <p>更新于：<span>{{date('Y-m-d',strtotime($manhua['last_update_time']))}}</span></p>
                          </a>
@@ -84,7 +84,7 @@
                          <ul class="snapShotCont" style="height: 190px;">
                              @for($i=0;$i<5;$i++)
                              <li class="snopshot" style="">
-                                 <a href="/manhuaview/{{$completeManhua[$i]['manhua_id']}}"><img src="{{$attribute[1]['value'].$completeManhua[$i]['cover']}}"><span class="elementOverlay"></span></a>
+                                 <a href="/manhuaview/{{$completeManhua[$i]['manhua_id']}}"><img class="lazy" src="<?php echo asset( "/resources/views/frontend/mobile/images/timg.gif") ?>" data-original="{{$attribute[1]['value'].$completeManhua[$i]['cover']}}"><span class="elementOverlay"></span></a>
                              </li>
                              @endfor
                          </ul>
@@ -119,30 +119,22 @@
                      @for($i=5;$i<13;$i++)
                      <li>
                          <a href="/manhuaview/{{$completeManhua[$i]['manhua_id']}}">
-                             <img src="{{$attribute[1]['value'].$completeManhua[$i]['cover']}}">
+                             <img class="lazy" src="<?php echo asset( "/resources/views/frontend/mobile/images/timg.gif") ?>" data-original="{{$attribute[1]['value'].$completeManhua[$i]['cover']}}">
                              <h3>{{$completeManhua[$i]['name']}}</h3>
                          </a>
                      </li>
                      @endfor
-
-
-
-
                  </ul>
              </div>
          </div>
-
      </div>
 
-
-
-
-
-
-
-
-
-
  </div>
+    <script src="<?php echo asset( "/resources/views/frontend/js/jquery.lazyload.min.js") ?>"></script>
+    <script>
+        $(function() {
+            $("img.lazy").lazyload({effect: "fadeIn"});
+        });
+    </script>
 
 @endsection

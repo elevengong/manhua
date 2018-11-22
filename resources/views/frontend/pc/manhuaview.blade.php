@@ -37,7 +37,7 @@
 
                     <a href="/manhuachapter/{{$chapter['manhua_id']}}/{{$chapter['chapter_id']}}" target="_blank">
                         @if(!empty($chapter['chapter_cover']))
-                        <img src="{{$attribute[1]['value'].$chapter['chapter_cover']}}">
+                        <img class="lazy" src="<?php echo asset( "/resources/views/frontend/mobile/images/timg.gif") ?>" data-original="{{$attribute[1]['value'].$chapter['chapter_cover']}}">
                         @else
                         <img src="<?php echo asset( "/resources/views/frontend/pc/images/nopicture.jpg") ?>">
                         @endif
@@ -64,7 +64,12 @@
         <div style="margin-bottom: 50px;"></div>
 
 
-
+        <script src="<?php echo asset( "/resources/views/frontend/js/jquery.lazyload.min.js") ?>"></script>
+        <script>
+            $(function() {
+                $("img.lazy").lazyload({effect: "fadeIn"});
+            });
+        </script>
 
 
 @endsection
