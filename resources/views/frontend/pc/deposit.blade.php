@@ -72,7 +72,7 @@
 
                                 <div class="payselect">
                                     <div class="alipay pitch" data-key="pay" data-pay="alipay"><img src="<?php echo asset( "/resources/views/frontend/pc/images/ali_01.png") ?>"></div>
-                                    <div class="wxpay" data-key="pay" data-pay="wxpay"><img src="<?php echo asset( "/resources/views/frontend/pc/images/wx_01.png") ?>"></div>
+                                    <div class="wxpay" data-key="pay" data-pay="wxpay" style="display: none;"><img src="<?php echo asset( "/resources/views/frontend/pc/images/wx_01.png") ?>"></div>
 
                                 </div>
                                 <form action="/user/payment" method="post" name="payform">
