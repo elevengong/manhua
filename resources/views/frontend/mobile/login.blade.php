@@ -23,7 +23,6 @@
         }
 
     </script>
-    <script src="http://img.18manhua.com/static/js/jquery.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="<?php echo asset( "/resources/views/frontend/mobile/css/comm.css") ?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo asset( "/resources/views/frontend/mobile/css/center.css") ?>" />

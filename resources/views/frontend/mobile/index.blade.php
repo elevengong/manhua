@@ -31,6 +31,7 @@
     <script src="<?php echo asset( "/resources/views/frontend/js/index.js") ?>"></script>
     <script src="<?php echo asset( "/resources/views/frontend/js/jquery.lazyload.min.js") ?>"></script>
 </head>
+
 <body style="margin: 0px;">
 <div class="main">
     <div class="interval"></div>
